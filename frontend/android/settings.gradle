@@ -1,5 +1,14 @@
-include ':app'
-include ':capacitor-cordova-android-plugins'
-project(':capacitor-cordova-android-plugins').projectDir = new File('./capacitor-cordova-android-plugins/')
+import java.io.File
 
-apply from: 'capacitor.settings.gradle'
+include ':app'
+
+// 1. Capacitor 코어 엔진 연결
+include ':capacitor-android'
+project(':capacitor-android').projectDir = new File('D:/MamaPapaProject/mama-papa-tellar/frontend/node_modules/@capacitor/android/capacitor')
+
+// 2. 사라졌던 플러그인 부품 강제 연결 (이게 핵심입니다!)
+include ':capacitor-cordova-android-plugins'
+project(':capacitor-cordova-android-plugins').projectDir = new File('D:/MamaPapaProject/mama-papa-tellar/frontend/android/capacitor-cordova-android-plugins')
+
+// 3. 자동 생성 파일은 이제 무시해도 됩니다. (주석 처리하거나 지워도 됨)
+// apply from: 'capacitor.settings.gradle'

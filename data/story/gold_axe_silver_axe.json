@@ -3,27 +3,31 @@
   "scenes": [
     {
       "id": 1,
-      "type": "narration",
-      "speaker": "narrator",
-      "text": "(EMO:calm) 아주 먼 옛날, 정직한 나무꾼이 연못가에서 나무를 하다가 도끼를 물속에 빠뜨리고 말았어요. 그때 물속에서 눈부신 신령님이 나타났답니다.",
-      "emotion_map": { "calm": { "stability": 0.9, "speed": 0.9 } }
+      "text": "옛날 어느 마을에 아주 정직한 나무꾼이 살았어요. 하루는 산속 연못가에서 일을 하다가 그만 실수로 도끼를 물속에 풍덩 빠뜨리고 말았지요.",
+      "emotion": "gentle",
+      "speed": 1.0,
+      "pitch": "normal"
     },
     {
       "id": 2,
-      "type": "dialogue",
-      "speaker": "woodcutter",
-      "text": "(EMO:sad) 아닙니다, 신령님. 그 금도끼는 제 것이 아닙니다. (EMO:honest) 제 도끼는 오직 낡은 쇠도끼 하나뿐입니다. 그것만 찾아주시면 감사하겠습니다.",
-      "emotion_map": {
-        "sad": { "stability": 0.6, "style_exaggeration": 0.4, "speed": 0.8 },
-        "honest": { "stability": 0.9, "style_exaggeration": 0.1, "speed": 1.0, "pitch": 1 }
-      }
+      "text": "나무꾼이 엉엉 울고 있을 때, 연못에서 번쩍번쩍 빛나는 신령님이 나타났어요. '이 금도끼가 네 것이냐?' 신령님의 질문에 나무꾼은 고개를 저으며 아니라고 대답했죠.",
+      "emotion": "gentle",
+      "speed": 1.0,
+      "pitch": "low"
     },
     {
       "id": 3,
-      "type": "narration",
-      "speaker": "narrator",
-      "text": "(EMO:happy) 정직한 나무꾼은 모든 도끼를 선물로 받고 큰 부자가 되었어요, 나무꾼은 평생 이웃을 도우며 정직하고 착하게 살았답니다.",
-      "emotion_map": { "happy": { "stability": 0.8, "style_exaggeration": 0.4, "speed": 1.0, "pitch": 1 } }
+      "text": "신령님이 은도끼를 보여주어도 아니라고 하자, 마지막으로 낡은 쇠도끼를 보여주었어요. 그제야 나무꾼은 '네! 그게 제 도끼입니다!'라고 대답했답니다.",
+      "emotion": "happy",
+      "speed": 1.0,
+      "pitch": "normal"
+    },
+    {
+      "id": 4,
+      "text": "신령님은 나무꾼의 정직한 마음에 감동해서 금도끼와 은도끼를 모두 선물로 주었어요. 정직하게 말하면 언제나 좋은 일이 생긴다는 걸 잊지 마세요!",
+      "emotion": "happy",
+      "speed": 1.0,
+      "pitch": "high"
     }
   ]
 }

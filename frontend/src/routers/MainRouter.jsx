@@ -6,7 +6,7 @@ function MainRouter() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/story" element={<StoryViewerPage />} />
+      <Route path="/story/:storyId" element={<StoryViewerPage />} />
     </Routes>
   );
 }

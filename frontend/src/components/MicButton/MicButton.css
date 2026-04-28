@@ -23,7 +23,7 @@
   transform: scale(0.95);
 }
 
-.mic-button.listening {
+.mic-button.isRecording {
   background: #c65f48;
   animation: pulse 1.5s infinite;
 }

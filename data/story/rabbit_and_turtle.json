@@ -1,29 +1,33 @@
 {
-  "story_title": "별주부전",
+  "story_title": "토끼와 자라",
   "scenes": [
     {
       "id": 1,
-      "type": "narration",
-      "speaker": "narrator",
-      "text": "(EMO:calm) 옛날 아주 먼 바닷속, 용왕님이 큰 병이 들고 말았어요. 토끼의 간이 약이라는 소식에 충성스러운 자라가 육지로 길을 떠났답니다.",
-      "emotion_map": { "calm": { "stability": 0.9, "speed": 1.0 } }
+      "text": "바닷속 용왕님이 큰 병에 걸리셨어요. 토끼의 간이 꼭 필요하다는 소식에 충성스러운 자라는 토끼를 찾으러 육지로 영차영차 올라갔답니다.",
+      "emotion": "urgent",
+      "speed": 1.0,
+      "pitch": "normal"
     },
     {
       "id": 2,
-      "type": "dialogue",
-      "speaker": "rabbit",
-      "text": "(EMO:shocked) 뭐? 내 간을 가져가겠다고? (EMO:clever) 아차차! 제가 간을 육지에 씻어 말려두고 왔네요. 다시 가기만 하면 바로 가져다드릴게요!",
-      "emotion_map": {
-        "shocked": { "stability": 0.2, "style_exaggeration": 1.0, "speed": 1.3, "pitch": 5 },
-        "clever": { "stability": 0.4, "style_exaggeration": 0.9, "speed": 1.2, "pitch": 3 }
-      }
+      "text": "자라는 토끼에게 용궁에 가면 높은 벼슬을 주겠다고 속여서 바닷속으로 데려왔어요. 하지만 용궁에 도착하자 무서운 군사들이 토끼를 꽉 잡았지요!",
+      "emotion": "scary",
+      "speed": 1.0,
+      "pitch": "low"
     },
     {
       "id": 3,
-      "type": "narration",
-      "speaker": "narrator",
-      "text": "(EMO:joyful) 육지에 닿자마자 토끼는 산속으로 도망쳤어요, 위기의 순간에도 침착하게 지혜를 짜낸 토끼는 숲속에서 오래오래 평화롭게 살았답니다.",
-      "emotion_map": { "joyful": { "stability": 0.8, "style_exaggeration": 0.4, "speed": 1.1 } }
+      "text": "깜짝 놀란 토끼는 꾀를 냈어요. '아이쿠! 제 간은 너무 귀해서 육지 깨끗한 곳에 씻어두고 왔는걸요?' 용왕님은 그 말을 믿고 토끼를 다시 땅으로 보내주었답니다.",
+      "emotion": "happy",
+      "speed": 1.0,
+      "pitch": "high"
+    },
+    {
+      "id": 4,
+      "text": "땅에 도착하자마자 토끼는 숲속으로 깡충깡충 도망치며 소리쳤어요. '세상에 간을 꺼내놓고 다니는 짐승이 어디 있냐!' 토끼의 지혜 덕분에 목숨을 구했답니다.",
+      "emotion": "happy",
+      "speed": 1.0,
+      "pitch": "high"
     }
   ]
 }
