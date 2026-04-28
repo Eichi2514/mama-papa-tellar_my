@@ -3,27 +3,45 @@
   "scenes": [
     {
       "id": 1,
-      "type": "narration",
-      "speaker": "narrator",
-      "text": "(EMO:calm) 아주 먼 옛날, 깊은 산골 마을에 어머니와 오누이가 살고 있었어요. 어느 날 떡을 팔고 돌아오던 어머니 앞에 굶주린 호랑이가 나타나 길을 막아섰답니다.",
-      "emotion_map": { "calm": { "stability": 0.8, "speed": 1.0 } }
+      "text": "옛날 아주 깊은 산골에 오누이가 오순도순 살고 있었어요. 하루는 엄마가 일을 하러 가시며 말씀하셨죠. '얘들아, 누가 와도 절대 문을 열어주면 안 된다!'",
+      "emotion": "gentle",
+      "speed": 1.0,
+      "pitch": "normal"
     },
     {
       "id": 2,
-      "type": "dialogue",
-      "speaker": "tiger",
-      "text": "(EMO:greedy) 떡 하나 주면 안 잡아먹지! 어흥! (EMO:scary) 얘들아, 엄마가 맛있는 떡을 가지고 왔단다. 어서 문을 열어주렴!",
-      "emotion_map": {
-        "greedy": { "stability": 0.3, "style_exaggeration": 0.8, "pitch": -1 },
-        "scary": { "stability": 0.2, "style_exaggeration": 1.0, "pitch": -4 }
-      }
+      "text": "엄마가 일을 마치고 돌아오는 길에 커다란 호랑이를 만났어요! 호랑이는 무섭게 소리쳤죠. '어흥! 떡 하나 주면 안 잡아먹지!'",
+      "emotion": "scary",
+      "speed": 1.0,
+      "pitch": "low"
     },
     {
       "id": 3,
-      "type": "narration",
-      "speaker": "narrator",
-      "text": "(EMO:happy) 하늘에서 내려온 동아줄을 타고 오누이는 각각 해와 달이 되었어요, 오누이는 하늘에서 세상을 환하게 비추며 오래오래 행복하게 살았답니다.",
-      "emotion_map": { "happy": { "stability": 0.7, "style_exaggeration": 0.5, "speed": 1.0, "pitch": 1 } }
+      "text": "결국 엄마로 변장한 호랑이가 집까지 찾아왔지만, 똑똑한 오누이는 뒷마당 커다란 나무 위로 잽싸게 도망갔답니다.",
+      "emotion": "urgent",
+      "speed": 1.0,
+      "pitch": "high"
+    },
+    {
+      "id": 4,
+      "text": "호랑이는 나무 위로 올라오려고 참기름을 발랐지만 자꾸 미끄러졌어요. 그 모습이 너무 웃겨서 동생은 그만 깔깔 웃음을 터뜨렸죠.",
+      "emotion": "happy",
+      "speed": 1.0,
+      "pitch": "normal"
+    },
+    {
+      "id": 5,
+      "text": "하지만 호랑이가 도끼로 나무를 찍으며 올라오기 시작하자, 오누이는 간절히 기도했어요. '하늘님! 저희를 살리시려거든 새 동줄을 내려주세요!'",
+      "emotion": "urgent",
+      "speed": 1.0,
+      "pitch": "high"
+    },
+    {
+      "id": 6,
+      "text": "하늘에서 새 동줄이 내려와 오누이는 무사히 하늘로 올라가 해와 달이 되었고, 나쁜 호랑이는 썩은 동줄을 잡고 떨어져 벌을 받았답니다.",
+      "emotion": "gentle",
+      "speed": 1.0,
+      "pitch": "normal"
     }
   ]
 }

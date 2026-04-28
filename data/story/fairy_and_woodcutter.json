@@ -3,27 +3,45 @@
   "scenes": [
     {
       "id": 1,
-      "type": "narration",
-      "speaker": "narrator",
-      "text": "(EMO:calm) 옛날 옛날 한 옛날에, 마음씨 착한 나무꾼이 살고 있었어요. 어느 날 사냥꾼에게 쫓기던 사슴을 구해주자 사슴이 신비로운 비밀을 알려주었답니다.",
-      "emotion_map": { "calm": { "stability": 0.9, "speed": 1.0 } }
+      "text": "옛날 어느 깊은 산골에 마음씨 착한 나무꾼이 살고 있었어요. 어느 날 나무꾼은 사냥꾼에게 쫓기던 사슴을 정성껏 숨겨주었답니다.",
+      "emotion": "gentle",
+      "speed": 1.0,
+      "pitch": "normal"
     },
     {
       "id": 2,
-      "type": "dialogue",
-      "speaker": "fairy",
-      "text": "(EMO:longing) 아이들이 셋이 되면 날개옷을 돌려받을 수 있을까요? (EMO:sad) 나무꾼님, 미안해요. 저는 이제 아이들을 데리고 다시 하늘나라로 돌아가야겠어요.",
-      "emotion_map": {
-        "longing": { "stability": 0.6, "style_exaggeration": 0.6, "speed": 0.8, "pitch": 1 },
-        "sad": { "stability": 0.4, "style_exaggeration": 0.9, "speed": 0.7, "pitch": -1 }
-      }
+      "text": "사슴은 보답으로 선녀들이 목욕하는 곳을 알려주었어요. 나무꾼은 그곳에서 선녀의 날개옷을 하나 몰래 감췄고, 하늘로 가지 못한 선녀와 결혼해 아이를 둘이나 낳고 행복하게 살았죠.",
+      "emotion": "happy",
+      "speed": 1.0,
+      "pitch": "normal"
     },
     {
       "id": 3,
-      "type": "narration",
-      "speaker": "narrator",
-      "text": "(EMO:pity) 선녀를 떠나보낸 나무꾼은 하늘만 바라보며 매일 눈물을 흘렸어요, 나무꾼은 결국 수탉이 되어 지붕 위에서 슬프게 울었다는 전설이 전해 내려오고 있답니다.",
-      "emotion_map": { "pity": { "stability": 0.7, "style_exaggeration": 0.5, "speed": 0.8 } }
+      "text": "하지만 선녀는 늘 하늘나라가 그리웠어요. 결국 나무꾼은 숨겨둔 날개옷을 보여주었고, 선녀는 두 아이를 품에 안고 하늘로 휘리릭 올라가 버렸답니다.",
+      "emotion": "sad",
+      "speed": 1.0,
+      "pitch": "high"
+    },
+    {
+      "id": 4,
+      "text": "슬퍼하던 나무꾼에게 사슴이 다시 나타나 하늘에서 내려오는 두레박을 타라고 했어요. 나무꾼은 두레박을 타고 올라가 가족들을 다시 만날 수 있었죠.",
+      "emotion": "happy",
+      "speed": 1.0,
+      "pitch": "normal"
+    },
+    {
+      "id": 5,
+      "text": "그런데 땅에 계신 어머니가 걱정된 나무꾼은 천마를 타고 잠시 내려왔다가 그만 말에서 떨어지고 말았어요. 결국 다시는 하늘에 가지 못하게 되었답니다.",
+      "emotion": "sad",
+      "speed": 1.0,
+      "pitch": "low"
+    },
+    {
+      "id": 6,
+      "text": "나무꾼은 매일 밤낮으로 하늘을 보며 슬피 울다가 수탉이 되었대요. 그래서 지금도 수탉은 하늘을 보며 울고 있는 거랍니다.",
+      "emotion": "gentle",
+      "speed": 1.0,
+      "pitch": "normal"
     }
   ]
 }

@@ -37,3 +37,94 @@
   font-size: 18px;
   line-height: 1.5;
 }
+
+.play-pause-btn {
+  border: none;
+  border-radius: 16px;
+  padding: 14px 20px;
+  background: #eee1d0;
+  color: #3a2a23;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.play-pause-btn:hover {
+  filter: brightness(0.95);
+}
+
+/* 화면 전체를 어둡게 덮는 배경 */
+.story-finished-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  /* 반투명 검정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  /* 가장 위에 뜨도록 설정 */
+  backdrop-filter: blur(5px);
+  /* 배경 살짝 흐리게 */
+}
+
+/* 중앙 화이트 팝업 박스 */
+.finished-content {
+  background: #fffaf2;
+  padding: 40px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 80%;
+}
+
+.finished-content h2 {
+  color: #7a5034;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.finished-content p {
+  color: #6a5b51;
+  margin-bottom: 30px;
+}
+
+/* 팝업 내 버튼 그룹 */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.replay-btn,
+.home-btn {
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.replay-btn {
+  background: #eee1d0;
+  color: #3a2a23;
+}
+
+.home-btn {
+  background: #7a5034;
+  color: white;
+}
+
+.replay-btn:active,
+.home-btn:active {
+  transform: scale(0.95);
+}

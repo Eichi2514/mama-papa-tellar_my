@@ -7,9 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "and": "npm run build && npx cap copy && npx cap sync android && npx cap open android",
+    "and:win": "npm run build && npx cap copy && rsync -av --delete android/ /mnt/d/MamaPapaProject/mama-papa-tellar/frontend/android/"
   },
   "dependencies": {
+    "@capacitor/android": "^8.3.1",
+    "@capacitor/cli": "^8.3.1",
+    "@capacitor/core": "^8.3.1",
+    "capacitor-voice-recorder": "^7.0.6",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-router-dom": "^7.14.2"

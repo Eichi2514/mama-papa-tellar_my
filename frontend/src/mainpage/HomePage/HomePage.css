@@ -201,3 +201,141 @@
   border: 1px dashed #d1b8a0;
   /* 부드러운 절취선 느낌 */
 }
+
+/* 스크립트 가이드 카드 스타일 */
+.registration-guide {
+  position: fixed;
+  /* absolute 대신 fixed를 사용하여 브라우저 화면 전체를 기준으로 잡습니다 */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  /* 배경을 반투명하게 만들고 뒤를 흐리게(블러) 처리합니다 */
+  background-color: rgba(252, 249, 245, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  /* 사파리 호환성 */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* 카드를 화면 정중앙에 배치 */
+  align-items: center;
+  z-index: 50;
+  /* 마이크 버튼보다는 아래에 위치하게 */
+
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 스크립트 카드는 그대로 유지! */
+.script-card {
+  width: 100%;
+  max-width: 360px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 30px 20px;
+  box-shadow: 0 16px 32px rgba(162, 109, 61, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border: 2px solid #fdf2e9;
+  text-align: center;
+}
+
+.script-card:active {
+  transform: scale(0.98);
+  /* 터치 시 부드럽게 눌리는 느낌 */
+  background: #fcf9f5;
+}
+
+.emotion-tag {
+  font-size: 0.85em;
+  color: #ff8c00;
+  font-weight: bold;
+  background-color: #fff3e0;
+  padding: 4px 10px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+/* 모바일 최적화 CSS */
+.mobile-script-display {
+  min-height: 180px;
+  /* 텍스트 길이에 따라 화면이 덜컹거리지 않도록 최소 높이 지정 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.voice-script-large {
+  font-size: 1.2rem;
+  /* 모바일에서 읽기 편한 큰 글씨 */
+  line-height: 1.5;
+  word-break: keep-all;
+  /* 단어 단위로 줄바꿈되어 읽기 편하게 */
+}
+
+.tap-guide {
+  font-size: 0.9rem;
+  color: #888;
+  animation: pulse 2s infinite;
+  /* 터치 유도를 위한 부드러운 깜빡임 효과 */
+}
+
+/* 최상단 최좌측 뱃지 스타일 */
+.top-left-voice-badge {
+  position: absolute;
+  top: 20px;
+  /* 상단 여백 */
+  left: 20px;
+  /* 좌측 여백 */
+  z-index: 100;
+  /* 다른 요소보다 위에 보이게 */
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background-color: rgba(232, 245, 233, 0.8);
+  /* 살짝 투명하게 해서 고급스럽게 */
+  border-radius: 30px;
+  border: 1px solid #c8e6c9;
+  backdrop-filter: blur(4px);
+  /* 뒷배경을 살짝 흐리게 (트렌디한 효과) */
+}
+
+.badge-text {
+  font-size: 0.75rem;
+  color: #2e7d32;
+  font-weight: 600;
+  max-width: 120px;
+  /* ID가 너무 길면 줄바꿈 방지 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dot-icon {
+  font-size: 0.6rem;
+  color: #4caf50;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
