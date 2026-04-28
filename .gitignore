@@ -209,6 +209,7 @@ __marimo__/
 # Audio files
 *.mp3
 *.wav
+*.m4a
 
 # Output
 output/
