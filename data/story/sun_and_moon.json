@@ -1,47 +1,15 @@
 {
   "story_title": "해와 달이 된 오누이",
   "scenes": [
-    {
-      "id": 1,
-      "text": "옛날 아주 깊은 산골에 오누이가 오순도순 살고 있었어요. 하루는 엄마가 일을 하러 가시며 말씀하셨죠. '얘들아, 누가 와도 절대 문을 열어주면 안 된다!'",
-      "emotion": "gentle",
-      "speed": 1.0,
-      "pitch": "normal"
-    },
-    {
-      "id": 2,
-      "text": "엄마가 일을 마치고 돌아오는 길에 커다란 호랑이를 만났어요! 호랑이는 무섭게 소리쳤죠. '어흥! 떡 하나 주면 안 잡아먹지!'",
-      "emotion": "scary",
-      "speed": 1.0,
-      "pitch": "low"
-    },
-    {
-      "id": 3,
-      "text": "결국 엄마로 변장한 호랑이가 집까지 찾아왔지만, 똑똑한 오누이는 뒷마당 커다란 나무 위로 잽싸게 도망갔답니다.",
-      "emotion": "urgent",
-      "speed": 1.0,
-      "pitch": "high"
-    },
-    {
-      "id": 4,
-      "text": "호랑이는 나무 위로 올라오려고 참기름을 발랐지만 자꾸 미끄러졌어요. 그 모습이 너무 웃겨서 동생은 그만 깔깔 웃음을 터뜨렸죠.",
-      "emotion": "happy",
-      "speed": 1.0,
-      "pitch": "normal"
-    },
-    {
-      "id": 5,
-      "text": "하지만 호랑이가 도끼로 나무를 찍으며 올라오기 시작하자, 오누이는 간절히 기도했어요. '하늘님! 저희를 살리시려거든 새 동줄을 내려주세요!'",
-      "emotion": "urgent",
-      "speed": 1.0,
-      "pitch": "high"
-    },
-    {
-      "id": 6,
-      "text": "하늘에서 새 동줄이 내려와 오누이는 무사히 하늘로 올라가 해와 달이 되었고, 나쁜 호랑이는 썩은 동줄을 잡고 떨어져 벌을 받았답니다.",
-      "emotion": "gentle",
-      "speed": 1.0,
-      "pitch": "normal"
-    }
+    { "id": 1, "type": "narration", "speaker": "narrator", "text": "옛날 아주 먼 옛날, 깊은 산골에 어머니와 오누이가 살고 있었어요.", "emotion": "calm" },
+    { "id": 2, "type": "narration", "speaker": "narrator", "text": "어느 날, 고개를 넘던 어머니 앞에 굶주린 호랑이가 나타났어요.", "emotion": "scary" },
+    { "id": 3, "type": "dialogue", "speaker": "tiger", "text": "떡 하나 주면 안 잡아먹지!", "emotion": "greedy" },
+    { "id": 4, "type": "narration", "speaker": "narrator", "text": "결국 어머니를 삼킨 호랑이는 어머니로 변장하고 오누이의 집으로 향했답니다.", "emotion": "scary" },
+    { "id": 5, "type": "dialogue", "speaker": "tiger", "text": "얘들아, 엄마가 왔단다.", "emotion": "scary" },
+    { "id": 6, "type": "dialogue", "speaker": "tiger", "text": "어서 문을 열어주렴!", "emotion": "scary" },
+    { "id": 7, "type": "dialogue", "speaker": "brother", "text": "우리 엄마 목소리가 아니야!", "emotion": "shocked" },
+    { "id": 8, "type": "narration", "speaker": "narrator", "text": "오누이는 뒷마당 나무 위로 도망쳤지만, 호랑이는 도끼로 나무를 찍으며 올라왔어요.", "emotion": "scary" },
+    { "id": 9, "type": "dialogue", "speaker": "sister", "text": "하느님, 저희를 살리시려면 새 동아줄을 내려주세요!", "emotion": "sad" },
+    { "id": 10, "type": "narration", "speaker": "narrator", "text": "하늘에서 내려온 줄을 타고 오누이는 해와 달이 되었고, 썩은 줄을 잡은 호랑이는 수수밭으로 떨어졌답니다.", "emotion": "happy" }
   ]
 }

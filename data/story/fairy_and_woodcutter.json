@@ -1,47 +1,14 @@
 {
   "story_title": "선녀와 나무꾼",
   "scenes": [
-    {
-      "id": 1,
-      "text": "옛날 어느 깊은 산골에 마음씨 착한 나무꾼이 살고 있었어요. 어느 날 나무꾼은 사냥꾼에게 쫓기던 사슴을 정성껏 숨겨주었답니다.",
-      "emotion": "gentle",
-      "speed": 1.0,
-      "pitch": "normal"
-    },
-    {
-      "id": 2,
-      "text": "사슴은 보답으로 선녀들이 목욕하는 곳을 알려주었어요. 나무꾼은 그곳에서 선녀의 날개옷을 하나 몰래 감췄고, 하늘로 가지 못한 선녀와 결혼해 아이를 둘이나 낳고 행복하게 살았죠.",
-      "emotion": "happy",
-      "speed": 1.0,
-      "pitch": "normal"
-    },
-    {
-      "id": 3,
-      "text": "하지만 선녀는 늘 하늘나라가 그리웠어요. 결국 나무꾼은 숨겨둔 날개옷을 보여주었고, 선녀는 두 아이를 품에 안고 하늘로 휘리릭 올라가 버렸답니다.",
-      "emotion": "sad",
-      "speed": 1.0,
-      "pitch": "high"
-    },
-    {
-      "id": 4,
-      "text": "슬퍼하던 나무꾼에게 사슴이 다시 나타나 하늘에서 내려오는 두레박을 타라고 했어요. 나무꾼은 두레박을 타고 올라가 가족들을 다시 만날 수 있었죠.",
-      "emotion": "happy",
-      "speed": 1.0,
-      "pitch": "normal"
-    },
-    {
-      "id": 5,
-      "text": "그런데 땅에 계신 어머니가 걱정된 나무꾼은 천마를 타고 잠시 내려왔다가 그만 말에서 떨어지고 말았어요. 결국 다시는 하늘에 가지 못하게 되었답니다.",
-      "emotion": "sad",
-      "speed": 1.0,
-      "pitch": "low"
-    },
-    {
-      "id": 6,
-      "text": "나무꾼은 매일 밤낮으로 하늘을 보며 슬피 울다가 수탉이 되었대요. 그래서 지금도 수탉은 하늘을 보며 울고 있는 거랍니다.",
-      "emotion": "gentle",
-      "speed": 1.0,
-      "pitch": "normal"
-    }
+    { "id": 1, "type": "narration", "speaker": "narrator", "text": "옛날 옛날 어느 깊은 산골에, 마음씨 착한 나무꾼이 나무를 하며 살고 있었어요.", "emotion": "warm" },
+    { "id": 2, "type": "dialogue", "speaker": "deer", "text": "나무꾼님! 사냥꾼이 저를 죽이려 쫓아오고 있어요! 제발 저를 좀 숨겨주세요!", "emotion": "urgent" },
+    { "id": 3, "type": "narration", "speaker": "narrator", "text": "나무꾼은 사슴을 숨겨주었고, 사슴은 목숨을 구한 보답으로 선녀들이 목욕하는 폭포와 날개옷을 훔치는 법을 알려주었죠.", "emotion": "warm" },
+    { "id": 4, "type": "narration", "speaker": "narrator", "text": "나무꾼은 폭포 근처 바위 뒤에 숨어 있다가, 가장 아름다운 선녀의 날개옷 한 벌을 몰래 가져와 깊숙한 곳에 숨겨버렸어요.", "emotion": "scary" },
+    { "id": 5, "type": "dialogue", "speaker": "fairy", "text": "어머나! 내 날개옷이 어디 갔지? 다른 자매들은 모두 하늘로 올라갔는데, 나만 두고 가다니!", "emotion": "sad" },
+    { "id": 6, "type": "narration", "speaker": "narrator", "text": "갈 곳 없는 선녀는 나무꾼과 결혼해 아이 셋을 낳을 때까지 날개옷을 찾지 못한 채 그리움 속에 살았답니다.", "emotion": "warm" },
+    { "id": 7, "type": "dialogue", "speaker": "woodcutter", "text": "부인, 이제 아이도 셋이나 되니 안심하고 고백하겠소. 사실 그날 날개옷을 숨긴 건 나였소. 자, 여기 당신의 옷이라오.", "emotion": "gentle" },
+    { "id": 8, "type": "dialogue", "speaker": "fairy", "text": "아! 당신이 어떻게 나에게 이럴 수가 있나요? 그토록 믿었는데... 저는 이제 아이들과 하늘로 돌아가겠어요!", "emotion": "sad" },
+    { "id": 9, "type": "narration", "speaker": "narrator", "text": "선녀는 배신감과 그리움에 눈물을 흘리며, 양팔에 아이들을 안고 구름 너머 하늘나라로 영영 날아가 버렸답니다.", "emotion": "sad" }
   ]
 }

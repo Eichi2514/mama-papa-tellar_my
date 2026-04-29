@@ -1,33 +1,13 @@
 {
   "story_title": "견우와 직녀",
   "scenes": [
-    {
-      "id": 1,
-      "text": "하늘나라에는 베를 잘 짜는 공주님 직녀와 소를 잘 모는 견우가 살았어요. 둘은 서로를 너무 사랑해서 결혼까지 하게 되었죠.",
-      "emotion": "happy",
-      "speed": 1.0,
-      "pitch": "normal"
-    },
-    {
-      "id": 2,
-      "text": "하지만 결혼한 뒤로 둘은 너무 노느라 자기 일을 하나도 하지 않았어요. 화가 난 옥황상제님은 둘을 은하수 동쪽과 서쪽 끝으로 아주 멀리 떨어뜨려 놓았답니다.",
-      "emotion": "scary",
-      "speed": 1.0,
-      "pitch": "low"
-    },
-    {
-      "id": 3,
-      "text": "둘은 서로가 너무 보고 싶어 매일 펑펑 울었어요. 그 눈물이 비가 되어 땅으로 쏟아지자, 세상의 까막까치들이 하늘로 올라가 머리를 맞대어 다리를 만들어주었지요.",
-      "emotion": "sad",
-      "speed": 1.0,
-      "pitch": "high"
-    },
-    {
-      "id": 4,
-      "text": "이 다리가 바로 '오작교'예요! 덕분에 견우와 직녀는 일 년에 단 한 번, 칠월 칠석에 다시 만날 수 있게 되었답니다.",
-      "emotion": "happy",
-      "speed": 1.0,
-      "pitch": "high"
-    }
+    { "id": 1, "type": "narration", "speaker": "narrator", "text": "옛날 옛날 아주 먼 하늘나라에, 소를 치는 견우와 베를 짜는 직녀가 살고 있었어요.", "emotion": "warm" },
+    { "id": 2, "type": "dialogue", "speaker": "king", "text": "너희 둘이 결혼한 뒤로 일은 안 하고 매일 놀기만 하니, 벌로 은하수 양끝으로 갈라져 살거라!", "emotion": "scary" },
+    { "id": 3, "type": "narration", "speaker": "narrator", "text": "옥황상제의 불호령에 두 사람은 갈라졌고, 일 년에 단 한 번 칠월 칠석에만 만날 수 있게 되었죠.", "emotion": "sad" },
+    { "id": 4, "type": "dialogue", "speaker": "lover", "text": "오, 나의 사랑하는 직녀! 은하수가 너무 깊고 넓어 당신에게 손을 뻗어도 닿지가 않소! 보고 싶소!", "emotion": "sad" },
+    { "id": 5, "type": "narration", "speaker": "narrator", "text": "이 안타까운 사연을 들은 전국의 까치와 까마귀들이 하늘로 날아올라 머리를 맞대고 오작교를 만들어 주었답니다.", "emotion": "warm" },
+    { "id": 6, "type": "dialogue", "speaker": "lover", "text": "드디어 다리가 생겼군요! 당신, 정말 보고 싶었소! 우리가 드디어 만나는구려!", "emotion": "joyful" },
+    { "id": 7, "type": "dialogue", "speaker": "lover", "text": "까치들아, 정말 고맙다. 너희들 덕분에 이토록 꿈에 그리던 아내를 품에 안아보는구나.", "emotion": "joyful" },
+    { "id": 8, "type": "narration", "speaker": "narrator", "text": "두 사람은 짧은 만남을 뒤로하고 다시 헤어지며 눈물을 흘렸고, 그 눈물이 비가 되어 땅으로 내렸답니다.", "emotion": "warm" }
   ]
 }

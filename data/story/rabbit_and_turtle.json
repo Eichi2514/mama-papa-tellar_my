@@ -1,33 +1,14 @@
 {
-  "story_title": "토끼와 자라",
+  "story_title": "별주부전",
   "scenes": [
-    {
-      "id": 1,
-      "text": "바닷속 용왕님이 큰 병에 걸리셨어요. 토끼의 간이 꼭 필요하다는 소식에 충성스러운 자라는 토끼를 찾으러 육지로 영차영차 올라갔답니다.",
-      "emotion": "urgent",
-      "speed": 1.0,
-      "pitch": "normal"
-    },
-    {
-      "id": 2,
-      "text": "자라는 토끼에게 용궁에 가면 높은 벼슬을 주겠다고 속여서 바닷속으로 데려왔어요. 하지만 용궁에 도착하자 무서운 군사들이 토끼를 꽉 잡았지요!",
-      "emotion": "scary",
-      "speed": 1.0,
-      "pitch": "low"
-    },
-    {
-      "id": 3,
-      "text": "깜짝 놀란 토끼는 꾀를 냈어요. '아이쿠! 제 간은 너무 귀해서 육지 깨끗한 곳에 씻어두고 왔는걸요?' 용왕님은 그 말을 믿고 토끼를 다시 땅으로 보내주었답니다.",
-      "emotion": "happy",
-      "speed": 1.0,
-      "pitch": "high"
-    },
-    {
-      "id": 4,
-      "text": "땅에 도착하자마자 토끼는 숲속으로 깡충깡충 도망치며 소리쳤어요. '세상에 간을 꺼내놓고 다니는 짐승이 어디 있냐!' 토끼의 지혜 덕분에 목숨을 구했답니다.",
-      "emotion": "happy",
-      "speed": 1.0,
-      "pitch": "high"
-    }
+    { "id": 1, "type": "narration", "speaker": "narrator", "text": "옛날 옛날 깊은 바닷속 용궁에, 용왕님이 몹쓸 병에 걸려 신음하고 계셨어요.", "emotion": "scary" },
+    { "id": 2, "type": "dialogue", "speaker": "turtle", "text": "용왕님! 제가 뭍으로 나가서 꾀 많은 토끼를 속여서라도 반드시 간을 구해오겠습니다!", "emotion": "stern" },
+    { "id": 3, "type": "dialogue", "speaker": "turtle", "text": "토끼님, 용궁에만 가면 평생 일도 안 하고 맛있는 것만 먹으며 살 수 있다니까요? 어서 제 등에 타시죠!", "emotion": "happy" },
+    { "id": 4, "type": "narration", "speaker": "narrator", "text": "용궁에 도착하자 군사들이 토끼를 에워쌌고, 용왕님은 서늘한 목소리로 토끼의 배를 가르라 명하셨어요.", "emotion": "scary" },
+    { "id": 5, "type": "dialogue", "speaker": "rabbit", "text": "(당황하며) 아, 아차! 간 말인가요? 아이구, 용왕님! 제 간은 너무나 귀해서 육지 숲속 시원한 바위 밑에 꺼내 말려두고 왔는걸요!", "emotion": "urgent" },
+    { "id": 6, "type": "dialogue", "speaker": "king", "text": "뭐라? 간을 육지에 두고 왔다고? 허허, 참으로 신기한 일이로다. 어서 가서 다시 가져오너라!", "emotion": "gentle" },
+    { "id": 7, "type": "narration", "speaker": "narrator", "text": "자라의 등에 타고 육지에 닿자마자 토끼는 껑충 뛰어 숲으로 달아나며 자라를 비웃었답니다.", "emotion": "warm" },
+    { "id": 8, "type": "dialogue", "speaker": "rabbit", "text": "하하하! 이 멍청한 자라야! 세상에 간을 빼놓고 다니는 동물이 어디 있느냐! 덕분에 구경 잘 했다!", "emotion": "joyful" },
+    { "id": 9, "type": "narration", "speaker": "narrator", "text": "토끼는 지혜로운 꾀로 목숨을 구했고, 자라는 자신의 어리석음을 탓하며 빈손으로 용궁으로 돌아갔답니다.", "emotion": "warm" }
   ]
 }
