@@ -1,110 +1,211 @@
-from gtts import gTTS
-from pydub import AudioSegment
-import sounddevice as sd
-import numpy as np
-import json
+import io
 import os
 import re
-from services.tts_service import generate_voice
+import json
+from urllib.parse import quote
+from pathlib import Path
 
-def clean_tts_text(text):
-    return re.sub(r"""['"`‘’“”]""", "", text)
-    text = re.sub(r"\s+", " ", text)
-    return text.strip()
+from pydub import AudioSegment
+from fastapi import APIRouter, HTTPException, Query
+from fastapi.responses import StreamingResponse
 
-def apply_pitch(audio, pitch):
-    if pitch == "high":
-        return audio._spawn(audio.raw_data, overrides={"frame_rate": int(audio.frame_rate * 1.2)}).set_frame_rate(audio.frame_rate)
-    elif pitch == "low":
-        return audio._spawn(audio.raw_data, overrides={"frame_rate": int(audio.frame_rate * 0.85)}).set_frame_rate(audio.frame_rate)
-    elif pitch == "normal":
-        return audio
-    else:
-        print(f"알 수 없는 pitch 값: {pitch}, normal로 처리합니다.")
-        return audio
+from app.services.parent_voice_engine import generate_parent_speech
 
-def apply_speed(audio, speed):
-    if speed != 1.0:
-        return audio._spawn(audio.raw_data, overrides={"frame_rate": int(audio.frame_rate * speed)}).set_frame_rate(audio.frame_rate)
-    return audio
+router = APIRouter(prefix="/api/stream", tags=["Stream"])
 
-def play_audio_sd(audio):
-    samples = np.array(audio.get_array_of_samples()).astype(np.float32)
-    samples /= np.iinfo(audio.array_type).max
-    if audio.channels == 2:
-        samples = samples.reshape((-1, 2))
-    sd.play(samples, samplerate=audio.frame_rate)
-    sd.wait()
+BASE_DIR = Path(__file__).parent.parent.parent
+DATA_DIR = BASE_DIR / "data"
+STORY_DIR = DATA_DIR / "story"
 
-def text_to_audio(text, pitch="normal", speed=1.0, emotion="평온"):
-    text = clean_tts_text(text)
+# ── 감정 설정 (기존 튜닝값 그대로) ───────────────────────
 
-    generate_voice(text, emotion=emotion)
-    audio = AudioSegment.from_mp3(f"파일명_{emotion}.mp3")
-    audio = apply_pitch(audio, pitch)
-    audio = apply_speed(audio, speed)
-    return audio
+EMOTION_SETTINGS = {
+    "calm":    {"stability": 0.80, "similarity_boost": 0.90, "style": 0.10},
+    "warm":    {"stability": 0.70, "similarity_boost": 0.90, "style": 0.25},
+    "gentle":  {"stability": 0.75, "similarity_boost": 0.90, "style": 0.20},
+    "happy":   {"stability": 0.35, "similarity_boost": 0.85, "style": 0.65},
+    "joyful":  {"stability": 0.20, "similarity_boost": 0.85, "style": 0.85},
+    "sad":     {"stability": 0.60, "similarity_boost": 0.90, "style": 0.55},
+    "scary":   {"stability": 0.25, "similarity_boost": 0.85, "style": 0.80},
+    "shocked": {"stability": 0.15, "similarity_boost": 0.85, "style": 0.90},
+    "urgent":  {"stability": 0.20, "similarity_boost": 0.85, "style": 0.85},
+    "stern":   {"stability": 0.75, "similarity_boost": 0.85, "style": 0.40},
+    "greedy":  {"stability": 0.30, "similarity_boost": 0.80, "style": 0.75},
+}
 
-def load_json(filepath):
-    with open(filepath, 'r', encoding='utf-8') as f:
-        return json.load(f)
-
-def play_story(story):
-    print(f"\n[ {story['story_title']} 시작 ]\n")
-
-    full_audio = text_to_audio(story['story_title'])
-
-    for scene in story['scenes']:
-        print(f"scene {scene['id']} | emotion: {scene['emotion']} | pitch: {scene['pitch']} | speed: {scene['speed']}")
-        print(f"{scene['text']}\n")
-        full_audio += AudioSegment.silent(duration=500)
-        full_audio += text_to_audio(scene['text'], scene['pitch'], scene['speed'])
-
-    full_audio.export(f"{story['story_title']}.wav", format="wav")
-    print(f"저장 완료: {story['story_title']}.wav")
-    play_audio_sd(full_audio)
-
-    if os.path.exists("temp.mp3"):
-        os.remove("temp.mp3")
+# ── story.json 감정 → parent_voice_engine.py 감정 키 정규화 ────────────────────
+EMOTION_MAP = {
+    "calm": "calm",
+    "warm": "warm",
+    "gentle": "gentle",
+    "happy": "happy",
+    "joyful": "joyful",
+    "sad": "sad",
+    "scary": "scary",
+    "shocked": "shocked",
+    "urgent": "urgent",
+    "stern": "stern",
+    "greedy": "greedy",
+    "neutral": "calm"
+}
 
 
-def play_selected_story(filename, json_folder="../../data/story"):
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    filepath = os.path.join(base_dir, json_folder, filename)
+# ── 화자별 보정치 ──────────────────────────────────────────
+SPEAKER_OVERLAY = {
+    "narrator":   {"stability": +0.00, "style": +0.00},
+    "tiger":      {"stability": -0.10, "style": +0.15},
+    "brother":    {"stability": +0.05, "style": +0.10},
+    "sister":     {"stability": +0.05, "style": +0.10},
+    "god":        {"stability": +0.15, "style": -0.10},
+    "king":       {"stability": +0.10, "style": -0.05},
+    "fairy":      {"stability": +0.00, "style": +0.10},
+    "woodcutter": {"stability": +0.05, "style": +0.00},
+    "deer":       {"stability": +0.00, "style": +0.10},
+    "rabbit":     {"stability": -0.05, "style": +0.15},
+    "turtle":     {"stability": +0.10, "style": -0.05},
+    "lover":      {"stability": +0.00, "style": +0.05},
+}
 
-    if not os.path.exists(filepath):
-        print(f"파일을 찾을 수 없어요: {filepath}")
-        return
+# ── 화자별 뒤 무음 길이 (ms) ──────────────────────────────
+SPEAKER_PAUSE = {
+    "narrator":   600,
+    "tiger":      250,
+    "brother":    400,
+    "sister":     400,
+    "god":        950,
+    "king":       800,
+    "fairy":      500,
+    "woodcutter": 500,
+    "deer":       400,
+    "rabbit":     300,
+    "turtle":     750,
+    "lover":      500,
+}
 
-    story = load_json(filepath)
-    play_story(story)
+def normalize_emotion(emotion: str) -> str:
+    return EMOTION_MAP.get(emotion, "calm")
 
-def load_metadata(metadata_path):
-    with open(metadata_path, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def find_story_file_by_id(metadata, story_id):
-    for story in metadata["story"]:
-        if story["story_id"] == story_id:
-            return story["file_name"]
-
-    return None
-
-def play_story_by_id(story_id, data_folder="../../data"):
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-
-    metadata_path = os.path.join(base_dir, data_folder, "metadata.json")
-    metadata = load_metadata(metadata_path)
-
-    file_name = find_story_file_by_id(metadata, story_id)
-
-    if file_name is None:
-        print(f"story_id를 찾을 수 없어요: {story_id}")
-        return
-
-    play_selected_story(file_name, json_folder=os.path.join(data_folder, "story"))            
+def clamp(value: float, lo: float = 0.0, hi: float = 1.0) -> float:
+    return max(lo, min(hi, value))
 
 
-if __name__ == "__main__":
-    play_story_by_id("ST_001")
+def get_voice_settings(emotion: str, speaker: str) -> dict:
+    base = EMOTION_SETTINGS.get(emotion, EMOTION_SETTINGS["calm"]).copy()
+    overlay = SPEAKER_OVERLAY.get(speaker, {})
+
+    base["stability"] = clamp(base["stability"] + overlay.get("stability", 0.0))
+    base["style"] = clamp(base["style"] + overlay.get("style", 0.0))
+
+    return base
+
+
+# ── 구두점 전처리 ──────────────────────────────────────────
+def preprocess_text(text: str) -> str:
+    text = re.sub(r'!', '! ',        text)
+    text = re.sub(r'\?', '? ',       text)
+    text = re.sub(r',', ',  ',       text)
+    text = re.sub(r"(\d)([가-힣])", r"\1 \2", text)
+    text = re.sub(r"([가-힣])(\d)", r"\1 \2", text)
+    text = re.sub(r'[…]|\.{3}', '... ', text)
+    text = re.sub(r' {2,}', ' ', text).strip()
+    return text
+
+@router.get("/play/{story_id}") 
+async def stream_story_audio(
+    story_id: str, 
+    voice_id: str = Query(..., description="프론트 로컬스토리지에서 가져온 부모님 목소리 ID")
+):
+    try:
+        # 1. 동화 정보 로드
+        with open(DATA_DIR / "metadata.json", "r", encoding="utf-8") as f:
+            meta = json.load(f)
+
+        story_info = next((s for s in meta["story"] if s["story_id"] == story_id), None)
+        
+        if not story_info:
+            raise HTTPException(status_code=404, detail="동화를 찾을 수 없습니다.")
+
+        with open(STORY_DIR / story_info["file_name"], "r", encoding="utf-8") as f:
+            story_data = json.load(f)
+
+        # 2. 오디오 합성 및 타임라인 계산
+        combined_audio = AudioSegment.empty()
+        timeline = []
+        current_time_ms = 0
+        
+        for scene_index, scene in enumerate(story_data.get("scenes", [])):
+            text = scene.get("text", "").strip()
+            if not text:
+                continue
+
+            clean_text = preprocess_text(text)
+            speaker = scene.get("speaker", "narrator")
+            scene_emotion = normalize_emotion(scene.get("emotion", "calm"))
+
+            temp_path = None
+
+            try:
+                timeline.append({
+                    "scene_index": scene_index,
+                    "start_time": current_time_ms / 1000.0,
+                    "text": text,
+                    "speaker": speaker,
+                    "emotion": scene_emotion,
+                    "id": scene.get("id"),
+                    "storyImage": story_info.get("image_path")
+                })
+
+                voice_settings = get_voice_settings(scene_emotion, speaker)
+
+                temp_path = generate_parent_speech(
+                    clean_text,
+                    voice_id=voice_id,
+                    emotion=scene_emotion,
+                    voice_settings=voice_settings,
+                    )
+
+                scene_audio = AudioSegment.from_file(temp_path)
+
+                combined_audio += scene_audio
+                current_time_ms += len(scene_audio)
+
+                pause_duration = SPEAKER_PAUSE.get(speaker, SPEAKER_PAUSE["narrator"])
+                combined_audio += AudioSegment.silent(duration=pause_duration)
+                current_time_ms += pause_duration
+
+            except Exception as e:
+                print(f"장면 합성 중 에러 발생: {e}")
+                continue
+
+            finally:
+                if temp_path and os.path.exists(temp_path):
+                    os.remove(temp_path)
+
+        if len(combined_audio) == 0:
+            raise HTTPException(status_code=500, detail="음성 생성에 실패했습니다.")
+
+        # 3. 메모리 스트리밍
+        audio_buffer = io.BytesIO()
+        combined_audio.export(audio_buffer, format="mp3", bitrate="128k")
+        audio_buffer.seek(0)
+
+        # 4. 타임라인 데이터 헤더 삽입
+        timeline_json = json.dumps(timeline, ensure_ascii=False)
+        safe_timeline_json = quote(timeline_json)
+
+        return StreamingResponse(
+            audio_buffer,
+            media_type="audio/mpeg",
+            headers={
+                "Content-Disposition": f"inline; filename={story_id}.mp3",
+                "X-Story-Timeline": safe_timeline_json,
+                "Access-Control-Expose-Headers": "X-Story-Timeline"
+            }
+        )
+
+    except HTTPException:
+        raise
+
+    except Exception as e:
+        print(f"서버 에러: {e}")
+        raise HTTPException(status_code=500, detail="동화를 읽어주는 중에 문제가 생겼어요.")

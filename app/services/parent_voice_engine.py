@@ -10,15 +10,22 @@ api_key = os.getenv("ELEVENLABS_GEN_API_KEY")
 client = ElevenLabs(api_key=api_key)
 
 EMOTION_SETTINGS = {
-    "기쁨": {"stability": 0.1, "similarity_boost": 1.0, "style": 1.0},
-    "슬픔": {"stability": 0.7, "similarity_boost": 1.0, "style": 0.05},
-    "공포": {"stability": 0.05, "similarity_boost": 1.0, "style": 1.0},
-    "평온": {"stability": 0.9, "similarity_boost": 1.0, "style": 0.0},
+    "calm":    {"stability": 0.80, "similarity_boost": 0.90, "style": 0.10},
+    "warm":    {"stability": 0.70, "similarity_boost": 0.90, "style": 0.25},
+    "gentle":  {"stability": 0.75, "similarity_boost": 0.90, "style": 0.20},
+    "happy":   {"stability": 0.35, "similarity_boost": 0.85, "style": 0.65},
+    "joyful":  {"stability": 0.20, "similarity_boost": 0.85, "style": 0.85},
+    "sad":     {"stability": 0.60, "similarity_boost": 0.90, "style": 0.55},
+    "scary":   {"stability": 0.25, "similarity_boost": 0.85, "style": 0.80},
+    "shocked": {"stability": 0.15, "similarity_boost": 0.85, "style": 0.90},
+    "urgent":  {"stability": 0.20, "similarity_boost": 0.85, "style": 0.85},
+    "stern":   {"stability": 0.75, "similarity_boost": 0.85, "style": 0.40},
+    "greedy":  {"stability": 0.30, "similarity_boost": 0.80, "style": 0.75}
 }
 
-def generate_parent_speech(text, voice_id, emotion="평온"):
+def generate_parent_speech(text, voice_id, emotion="평온",voice_settings=None):
     """프론트에서 넘겨받은 voice_id를 사용하여 맞춤형 음성을 생성합니다."""
-    settings = EMOTION_SETTINGS.get(emotion, EMOTION_SETTINGS["평온"])
+    settings = EMOTION_SETTINGS.get(emotion, EMOTION_SETTINGS["calm"])
     
     audio_generator = client.text_to_speech.convert(
         voice_id=voice_id,  # 이제 고정값이 아닌 인자로 받은 ID 사용
