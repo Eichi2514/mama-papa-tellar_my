@@ -1,29 +1,13 @@
 {
   "story_title": "견우와 직녀",
   "scenes": [
-    {
-      "id": 1,
-      "type": "narration",
-      "speaker": "narrator",
-      "text": "(EMO:calm) 옛날 옛적, 은하수 건너편에 사이좋은 견우와 직녀가 살고 있었어요. 하지만 두 사람은 결혼 후 일은 뒷전이고 매일 놀기만 했답니다.",
-      "emotion_map": { "calm": { "stability": 0.9, "speed": 1.0 } }
-    },
-    {
-      "id": 2,
-      "type": "dialogue",
-      "speaker": "king",
-      "text": "(EMO:angry) 이놈들! 당장 은하수 양끝으로 떠나거라! (EMO:stern) 일 년에 단 하루, 칠월 칠석에만 서로를 만날 수 있을 것이다!",
-      "emotion_map": {
-        "angry": { "stability": 0.3, "style_exaggeration": 1.0, "speed": 0.8, "pitch": -2 },
-        "stern": { "stability": 0.9, "style_exaggeration": 0.4, "speed": 0.7, "pitch": -3 }
-      }
-    },
-    {
-      "id": 3,
-      "type": "narration",
-      "speaker": "narrator",
-      "text": "(EMO:warm) 새들이 만든 다리 위에서 두 사람은 눈물의 재회를 했어요, 칠월 칠석에 내리는 비는 그들이 기뻐서 흘리는 눈물이라는 이야기가 지금까지 전해 내려오고 있답니다.",
-      "emotion_map": { "warm": { "stability": 0.8, "style_exaggeration": 0.3, "speed": 0.9 } }
-    }
+    { "id": 1, "type": "narration", "speaker": "narrator", "text": "옛날 옛날 아주 먼 하늘나라에, 소를 치는 견우와 베를 짜는 직녀가 살고 있었어요.", "emotion": "warm" },
+    { "id": 2, "type": "dialogue", "speaker": "king", "text": "너희 둘이 결혼한 뒤로 일은 안 하고 매일 놀기만 하니, 벌로 은하수 양끝으로 갈라져 살거라!", "emotion": "scary" },
+    { "id": 3, "type": "narration", "speaker": "narrator", "text": "옥황상제의 불호령에 두 사람은 갈라졌고, 일 년에 단 한 번 칠월 칠석에만 만날 수 있게 되었죠.", "emotion": "sad" },
+    { "id": 4, "type": "dialogue", "speaker": "lover", "text": "오, 나의 사랑하는 직녀! 은하수가 너무 깊고 넓어 당신에게 손을 뻗어도 닿지가 않소! 보고 싶소!", "emotion": "sad" },
+    { "id": 5, "type": "narration", "speaker": "narrator", "text": "이 안타까운 사연을 들은 전국의 까치와 까마귀들이 하늘로 날아올라 머리를 맞대고 오작교를 만들어 주었답니다.", "emotion": "warm" },
+    { "id": 6, "type": "dialogue", "speaker": "lover", "text": "드디어 다리가 생겼군요! 당신, 정말 보고 싶었소! 우리가 드디어 만나는구려!", "emotion": "joyful" },
+    { "id": 7, "type": "dialogue", "speaker": "lover", "text": "까치들아, 정말 고맙다. 너희들 덕분에 이토록 꿈에 그리던 아내를 품에 안아보는구나.", "emotion": "joyful" },
+    { "id": 8, "type": "narration", "speaker": "narrator", "text": "두 사람은 짧은 만남을 뒤로하고 다시 헤어지며 눈물을 흘렸고, 그 눈물이 비가 되어 땅으로 내렸답니다.", "emotion": "warm" }
   ]
 }

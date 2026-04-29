@@ -1,29 +1,15 @@
 {
   "story_title": "해와 달이 된 오누이",
   "scenes": [
-    {
-      "id": 1,
-      "type": "narration",
-      "speaker": "narrator",
-      "text": "(EMO:calm) 아주 먼 옛날, 깊은 산골 마을에 어머니와 오누이가 살고 있었어요. 어느 날 떡을 팔고 돌아오던 어머니 앞에 굶주린 호랑이가 나타나 길을 막아섰답니다.",
-      "emotion_map": { "calm": { "stability": 0.8, "speed": 1.0 } }
-    },
-    {
-      "id": 2,
-      "type": "dialogue",
-      "speaker": "tiger",
-      "text": "(EMO:greedy) 떡 하나 주면 안 잡아먹지! 어흥! (EMO:scary) 얘들아, 엄마가 맛있는 떡을 가지고 왔단다. 어서 문을 열어주렴!",
-      "emotion_map": {
-        "greedy": { "stability": 0.3, "style_exaggeration": 0.8, "pitch": -1 },
-        "scary": { "stability": 0.2, "style_exaggeration": 1.0, "pitch": -4 }
-      }
-    },
-    {
-      "id": 3,
-      "type": "narration",
-      "speaker": "narrator",
-      "text": "(EMO:happy) 하늘에서 내려온 동아줄을 타고 오누이는 각각 해와 달이 되었어요, 오누이는 하늘에서 세상을 환하게 비추며 오래오래 행복하게 살았답니다.",
-      "emotion_map": { "happy": { "stability": 0.7, "style_exaggeration": 0.5, "speed": 1.0, "pitch": 1 } }
-    }
+    { "id": 1, "type": "narration", "speaker": "narrator", "text": "옛날 아주 먼 옛날, 깊은 산골에 어머니와 오누이가 살고 있었어요.", "emotion": "calm" },
+    { "id": 2, "type": "narration", "speaker": "narrator", "text": "어느 날, 고개를 넘던 어머니 앞에 굶주린 호랑이가 나타났어요.", "emotion": "scary" },
+    { "id": 3, "type": "dialogue", "speaker": "tiger", "text": "떡 하나 주면 안 잡아먹지!", "emotion": "greedy" },
+    { "id": 4, "type": "narration", "speaker": "narrator", "text": "결국 어머니를 삼킨 호랑이는 어머니로 변장하고 오누이의 집으로 향했답니다.", "emotion": "scary" },
+    { "id": 5, "type": "dialogue", "speaker": "tiger", "text": "얘들아, 엄마가 왔단다.", "emotion": "scary" },
+    { "id": 6, "type": "dialogue", "speaker": "tiger", "text": "어서 문을 열어주렴!", "emotion": "scary" },
+    { "id": 7, "type": "dialogue", "speaker": "brother", "text": "우리 엄마 목소리가 아니야!", "emotion": "shocked" },
+    { "id": 8, "type": "narration", "speaker": "narrator", "text": "오누이는 뒷마당 나무 위로 도망쳤지만, 호랑이는 도끼로 나무를 찍으며 올라왔어요.", "emotion": "scary" },
+    { "id": 9, "type": "dialogue", "speaker": "sister", "text": "하느님, 저희를 살리시려면 새 동아줄을 내려주세요!", "emotion": "sad" },
+    { "id": 10, "type": "narration", "speaker": "narrator", "text": "하늘에서 내려온 줄을 타고 오누이는 해와 달이 되었고, 썩은 줄을 잡은 호랑이는 수수밭으로 떨어졌답니다.", "emotion": "happy" }
   ]
 }
