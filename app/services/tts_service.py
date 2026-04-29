@@ -2,6 +2,7 @@
 
 from elevenlabs.client import ElevenLabs
 from dotenv import load_dotenv
+
 import os
 
 # 프로젝트 루트의 .env 불러오기

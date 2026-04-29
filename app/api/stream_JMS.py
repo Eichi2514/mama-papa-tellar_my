@@ -67,7 +67,8 @@ def tts_generate(text, params):
     mp3_path = generate_voice(text, emotion=kr_emotion)
     return mp3_path
 
-''' gTTS 임시 대체 (오프라인 테스트용)
+''' 
+gTTS 임시 대체 (오프라인 테스트용)
 def tts_generate(text, params):
     from gtts import gTTS
     tts = gTTS(text=text, lang="ko", slow=params["slow"])
@@ -75,7 +76,24 @@ def tts_generate(text, params):
         tmp_path = tmp.name
     tts.save(tmp_path)
     return tmp_path
-'''
+
+# ElevenLabs (elevenlabs.py 완성 후 사용)
+
+def tts_generate(text, params):
+     from app.services.tts_service import generate_audio
+     mp3_bytes = generate_audio(
+         text=text,
+         stability=params["stability"], # 감정 파라미터
+         similarity_boost=params["similarity_boost"],
+         style=params["style"],
+         speed=params["speed"],
+     )
+     with tempfile.NamedTemporaryFile(suffix=".mp3", delete=False) as tmp:
+         tmp.write(mp3_bytes)
+         tmp_path = tmp.name
+     return tmp_path
+
+
 
 
 # 오디오 재생 (mp3 → playsound)
@@ -133,3 +151,4 @@ def run_story(filename):
 if __name__ == "__main__":
     print_story_list()
     run_story("cowherd_and_weaver.json")
+'''
