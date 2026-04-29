@@ -2,6 +2,7 @@
 
 from elevenlabs.client import ElevenLabs
 from dotenv import load_dotenv
+
 import os
 
 # 프로젝트 루트의 .env 불러오기
@@ -54,6 +55,7 @@ def generate_voice(text, emotion="평온"):
     print(f"저장완료: {filename}")
 
 # 같은 문장을 감정별로 4개 생성
+
 generate_voice("어흥! 호랑이가 나타났다!", emotion="공포")
 generate_voice("와! 금도끼를 찾았어요!", emotion="기쁨")
 generate_voice("나무꾼은 슬피 울었어요.", emotion="슬픔")
