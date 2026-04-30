@@ -1,3 +1,24 @@
+<<<<<<< HEAD
+=======
+import java.io.File
+
+// 1. Capacitor 코어 엔진 연결 (상대 경로 사용)
+include ':capacitor-android'
+project(':capacitor-android').projectDir = new File(rootProject.projectDir, '../node_modules/@capacitor/android/capacitor')
+
+// 2. 음성 녹음 플러그인 연결 (가장 중요한 부분!)
+include ':capacitor-voice-recorder'
+project(':capacitor-voice-recorder').projectDir = new File(rootProject.projectDir, '../node_modules/capacitor-voice-recorder/android')
+
+// 3. Cordova 관련 플러그인 (필요한 경우)
+include ':capacitor-cordova-android-plugins'
+project(':capacitor-cordova-android-plugins').projectDir = new File(rootProject.projectDir, 'capacitor-cordova-android-plugins')
+
+// 4. 자동 생성 설정 불러오기 (원래는 이게 기본입니다)
+apply from: 'capacitor.settings.gradle'
+
+"""
+>>>>>>> bc682a8c01addbfc7af6f4189e68d3a524821e55
 include ':app'
 
 // 1. Capacitor 코어 엔진 연결
@@ -12,5 +33,11 @@ project(':capacitor-voice-recorder').projectDir = new File(rootProject.projectDi
 include ':capacitor-cordova-android-plugins'
 project(':capacitor-cordova-android-plugins').projectDir = new File(rootProject.projectDir, 'capacitor-cordova-android-plugins')
 
+<<<<<<< HEAD
 // 4. Capacitor 자동 생성 설정 불러오기
 apply from: 'capacitor.settings.gradle'
+=======
+// 3. 자동 생성 파일은 이제 무시해도 됩니다. (주석 처리하거나 지워도 됨)
+// apply from: 'capacitor.settings.gradle'
+"""
+>>>>>>> bc682a8c01addbfc7af6f4189e68d3a524821e55
