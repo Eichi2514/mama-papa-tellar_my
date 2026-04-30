@@ -30,6 +30,30 @@ function StoryViewerPage() {
   const currentPage = storyData.length > 0 ? storyData[currentPageIndex] : null;
   const lastPageIndex = storyData.length > 0 ? storyData.length - 1 : 0;
 
+  const getSceneImage = (page) => {
+    const rawImage =
+      page?.image ||
+      page?.image_path ||
+      page?.storyImage ||
+      location.state?.storyImage ||
+      "";
+
+    if (!rawImage) return "";
+
+    // 외부 이미지 주소, base64, blob 주소면 그대로 사용
+    if (/^(https?:|data:|blob:)/.test(rawImage)) {
+      return rawImage;
+    }
+
+    // /illusts/ST_002/scene_1.png 처럼 이미 /로 시작하면 그대로 사용
+    if (rawImage.startsWith("/")) {
+      return rawImage;
+    }
+
+    // illusts/ST_002/scene_1.png 처럼 들어오면 앞에 / 붙이기
+    return `/${rawImage}`;
+  };
+
   const handleEnded = () => {
     setIsPlaying(false);
     setIsFinished(true); // 동화가 끝났음을 알림
@@ -54,7 +78,9 @@ function StoryViewerPage() {
     const initStoryAudio = async () => {
       try {
         // 1. 서버에서 오디오와 타임라인 한 번에 가져오기
-        const response = await fetch(`${API_BASE_URL}/api/stream/play/${storyId}?voice_id=${voiceId}`);
+        const response = await fetch(
+          `${API_BASE_URL}/api/stream/play/${storyId}?voice_id=${voiceId}`,
+        );
 
         // 헤더에서 인코딩된 타임라인 추출 및 디코딩
         const encoded = response.headers.get("X-Story-Timeline");
@@ -81,7 +107,7 @@ function StoryViewerPage() {
         audio.ontimeupdate = () => {
           const currentTime = audio.currentTime;
 
-          setDynamicTimeline(prevTimeline => {
+          setDynamicTimeline((prevTimeline) => {
             if (prevTimeline.length === 0) return prevTimeline;
 
             // 현재 시간보다 앞에 있는 마지막 인덱스를 찾음
@@ -90,7 +116,9 @@ function StoryViewerPage() {
               return currentTime >= start ? idx : acc;
             }, 0);
 
-            setCurrentPageIndex(prev => newIndex !== prev ? newIndex : prev);
+            setCurrentPageIndex((prev) =>
+              newIndex !== prev ? newIndex : prev,
+            );
             return prevTimeline;
           });
         };
@@ -121,7 +149,10 @@ function StoryViewerPage() {
       setCurrentPageIndex(prevIndex);
       // 수동 조작 시 실제 데이터의 시작 시간으로 오디오 이동
       if (audioRef.current) {
-        audioRef.current.currentTime = storyData[prevIndex].start_time || storyData[prevIndex].startTime || 0;
+        audioRef.current.currentTime =
+          storyData[prevIndex].start_time ||
+          storyData[prevIndex].startTime ||
+          0;
       }
     }
   };
@@ -132,7 +163,10 @@ function StoryViewerPage() {
       setCurrentPageIndex(nextIndex);
       // 수동 조작 시 실제 데이터의 시작 시간으로 오디오 이동
       if (audioRef.current) {
-        audioRef.current.currentTime = storyData[nextIndex].start_time || storyData[nextIndex].startTime || 0;
+        audioRef.current.currentTime =
+          storyData[nextIndex].start_time ||
+          storyData[nextIndex].startTime ||
+          0;
       }
     }
   };
@@ -168,12 +202,16 @@ function StoryViewerPage() {
 
             <p className="page-count">
               {/* 🗑️ 가짜 데이터 길이 대신 진짜 데이터 길이 사용 */}
-              {storyData.length > 0 ? `${currentPageIndex + 1} / ${storyData.length}` : "준비 중..."}
+              {storyData.length > 0
+                ? `${currentPageIndex + 1} / ${storyData.length}`
+                : "준비 중..."}
             </p>
           </div>
 
           {/* 상황 요약 (기획용) */}
-          {situation && <p className="situation-summary">입력 상황: {situation}</p>}
+          {situation && (
+            <p className="situation-summary">입력 상황: {situation}</p>
+          )}
 
           {/* 메인 동화 슬라이드 */}
           {isLoading || storyData.length === 0 || !currentPage ? (
@@ -183,8 +221,8 @@ function StoryViewerPage() {
           ) : (
             <StorySlide
               page={{
-                image: location.state?.storyImage || currentPage.image_path || currentPage.storyImage,
-                text: currentPage.text
+                image: getSceneImage(currentPage),
+                text: currentPage.text,
               }}
             />
           )}
@@ -206,20 +244,22 @@ function StoryViewerPage() {
           />
         </section>
 
-        {
-          isFinished && (
-            <div className="story-finished-overlay">
-              <div className="finished-content">
-                <h2>🌟 정말 재미있는 이야기였어!</h2>
-                <p>우리 아이, 한 번 더 들어볼까?</p>
-                <div className="button-group">
-                  <button onClick={handleReplay} className="replay-btn">다시 읽기 🔄</button>
-                  <button onClick={handleGoHome} className="home-btn">다른 동화 보기 🏠</button>
-                </div>
+        {isFinished && (
+          <div className="story-finished-overlay">
+            <div className="finished-content">
+              <h2>🌟 정말 재미있는 이야기였어!</h2>
+              <p>우리 아이, 한 번 더 들어볼까?</p>
+              <div className="button-group">
+                <button onClick={handleReplay} className="replay-btn">
+                  다시 읽기 🔄
+                </button>
+                <button onClick={handleGoHome} className="home-btn">
+                  다른 동화 보기 🏠
+                </button>
               </div>
             </div>
-          )
-        }
+          </div>
+        )}
       </main>
     </div>
   );
