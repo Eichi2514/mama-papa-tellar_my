@@ -1,14 +1,77 @@
 {
   "story_title": "금도끼 은도끼",
   "scenes": [
-    { "id": 1, "type": "narration", "speaker": "narrator", "text": "옛날 옛날 어느 마을에, 정직한 나무꾼이 연못가에서 나무를 베다가 그만 손을 미끄러뜨리고 말았어요.", "emotion": "warm" },
-    { "id": 2, "type": "dialogue", "speaker": "woodcutter", "text": "풍덩! 아차! 도끼가 깊은 연못에 빠져버렸네! 이제 우리 가족은 무얼 먹고 살아야 하나!", "emotion": "sad" },
-    { "id": 3, "type": "narration", "speaker": "narrator", "text": "나무꾼이 엉엉 울자, 갑자기 물 위로 거품이 일더니 하얀 수염을 길게 기른 산신령님이 나타나셨어요.", "emotion": "scary" },
-    { "id": 4, "type": "dialogue", "speaker": "god", "text": "허허, 어째서 그리 슬피 울고 있느냐? 이 번쩍이는 금도끼가 네 도끼냐? 아니면 이 은도끼가 네 것이냐?", "emotion": "gentle" },
-    { "id": 5, "type": "dialogue", "speaker": "woodcutter", "text": "아닙니다, 산신령님. 그런 보물들은 제 것이 아닙니다. 제 도끼는 그저 낡고 무거운 쇠도끼일 뿐입니다.", "emotion": "warm" },
-    { "id": 6, "type": "dialogue", "speaker": "god", "text": "참으로 정직하구나! 네 마음씨가 기특하니 이 도끼들을 모두 너에게 주마. 가져가서 행복하게 살거라!", "emotion": "happy" },
-    { "id": 7, "type": "narration", "speaker": "narrator", "text": "한편, 이 소식을 들은 욕심쟁이 이웃은 연못으로 달려가 일부러 쇠도끼를 던지고 거짓 눈물을 흘렸어요.", "emotion": "warm" },
-    { "id": 8, "type": "dialogue", "speaker": "god", "text": "이 금도끼가 네 것이냐? (욕심쟁이: 네! 맞습니다!) 고얀 놈! 감히 나를 속이려 들다니, 네 도끼도 찾지 못할 것이다!", "emotion": "scary" },
-    { "id": 9, "type": "narration", "speaker": "narrator", "text": "욕심을 부리던 이웃은 제 도끼마저 잃고 후회했지만 소용없었죠. 정직함이야말로 가장 큰 보물이라는 것을 우리 친구들도 잊지 마세요.", "emotion": "warm" }
+    {
+      "id": 1,
+      "type": "narration",
+      "speaker": "narrator",
+      "text": "옛날 옛날 어느 마을에, 정직한 나무꾼이 연못가에서 나무를 베다가 그만 손을 미끄러뜨리고 말았어요.",
+      "emotion": "warm",
+      "image": "/story_image/gold_axe_silver_axe/gasa1.png"
+    },
+    {
+      "id": 2,
+      "type": "dialogue",
+      "speaker": "woodcutter",
+      "text": "풍덩! 아차! 도끼가 깊은 연못에 빠져버렸네! 이제 우리 가족은 무얼 먹고 살아야 하나!",
+      "emotion": "sad",
+      "image": "/story_image/gold_axe_silver_axe/gasa2.png"
+    },
+    {
+      "id": 3,
+      "type": "narration",
+      "speaker": "narrator",
+      "text": "나무꾼이 엉엉 울자, 갑자기 물 위로 거품이 일더니 하얀 수염을 길게 기른 산신령님이 나타나셨어요.",
+      "emotion": "scary",
+      "image": "/story_image/gold_axe_silver_axe/gasa3.png"
+    },
+    {
+      "id": 4,
+      "type": "dialogue",
+      "speaker": "god",
+      "text": "허허, 어째서 그리 슬피 울고 있느냐? 이 번쩍이는 금도끼가 네 도끼냐? 아니면 이 은도끼가 네 것이냐?",
+      "emotion": "gentle",
+      "image": "/story_image/gold_axe_silver_axe/gasa4.png"
+    },
+    {
+      "id": 5,
+      "type": "dialogue",
+      "speaker": "woodcutter",
+      "text": "아닙니다, 산신령님. 그런 보물들은 제 것이 아닙니다. 제 도끼는 그저 낡고 무거운 쇠도끼일 뿐입니다.",
+      "emotion": "warm",
+      "image": "/story_image/gold_axe_silver_axe/gasa5.png"
+    },
+    {
+      "id": 6,
+      "type": "dialogue",
+      "speaker": "god",
+      "text": "참으로 정직하구나! 네 마음씨가 기특하니 이 도끼들을 모두 너에게 주마. 가져가서 행복하게 살거라!",
+      "emotion": "happy",
+      "image": "/story_image/gold_axe_silver_axe/gasa6.png"
+    },
+    {
+      "id": 7,
+      "type": "narration",
+      "speaker": "narrator",
+      "text": "한편, 이 소식을 들은 욕심쟁이 이웃은 연못으로 달려가 일부러 쇠도끼를 던지고 거짓 눈물을 흘렸어요.",
+      "emotion": "warm",
+      "image": "/story_image/gold_axe_silver_axe/gasa7.png"
+    },
+    {
+      "id": 8,
+      "type": "dialogue",
+      "speaker": "god",
+      "text": "이 금도끼가 네 것이냐? (욕심쟁이: 네! 맞습니다!) 고얀 놈! 감히 나를 속이려 들다니, 네 도끼도 찾지 못할 것이다!",
+      "emotion": "scary",
+      "image": "/story_image/gold_axe_silver_axe/gasa8.png"
+    },
+    {
+      "id": 9,
+      "type": "narration",
+      "speaker": "narrator",
+      "text": "욕심을 부리던 이웃은 제 도끼마저 잃고 후회했지만 소용없었죠. 정직함이야말로 가장 큰 보물이라는 것을 우리 친구들도 잊지 마세요.",
+      "emotion": "warm",
+      "image": "/story_image/gold_axe_silver_axe/gasa9.png"
+    }
   ]
 }

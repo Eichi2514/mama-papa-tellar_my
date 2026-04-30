@@ -217,5 +217,9 @@ output/
 # 가상환경
 p1t7/
 
+<<<<<<< Updated upstream
  # API_BASE_URL
+=======
+# API_BASE_URL
+>>>>>>> Stashed changes
 frontend/src/config/apiConfig.js

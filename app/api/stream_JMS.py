@@ -11,27 +11,75 @@ from pydub import AudioSegment
 
 from app.services.Qwen3_tts_service import generate_voice_qwen
 
-router = APIRouter(prefix="/api/stream_jms", tags=["Stream JMS"])
+router = APIRouter(prefix="/api/stream", tags=["Stream"])
 
 BASE_DIR = Path(__file__).parent.parent.parent
 DATA_DIR = BASE_DIR / "data"
 STORY_DIR = DATA_DIR / "story"
+FRONTEND_PUBLIC_DIR = BASE_DIR / "frontend" / "public"
+FRONTEND_DIST_DIR = BASE_DIR / "frontend" / "dist"
+
+
+def normalize_image_path(raw_image):
+    if not raw_image:
+        return ""
+
+    image_path = str(raw_image).strip()
+
+    if image_path.startswith(("http://", "https://", "data:", "blob:")):
+        return image_path
+
+    if image_path.startswith("/"):
+        return image_path
+
+    return f"/{image_path}"
+
+
+def public_image_exists(image_path):
+    if not image_path:
+        return False
+
+    if image_path.startswith(("http://", "https://", "data:", "blob:")):
+        return True
+
+    relative_path = image_path.lstrip("/")
+
+    return any(
+        (base_dir / relative_path).exists()
+        for base_dir in (FRONTEND_PUBLIC_DIR, FRONTEND_DIST_DIR)
+    )
+
+
+def get_scene_image_path(story_info, scene):
+    # 1순위: JSON 장면 안에 image가 직접 있으면 그걸 사용
+    for key in ("image", "image_path", "storyImage"):
+        if scene.get(key):
+            return normalize_image_path(scene.get(key))
+
+    # 2순위: 정해진 폴더 규칙으로 자동 탐색
+    story_id = story_info.get("story_id", "")
+    scene_id = scene.get("id")
+
+    if story_id and scene_id is not None:
+        auto_candidates = [
+            f"/illusts/{story_id}/scene_{scene_id}.png",
+            f"/illusts/{story_id}/scene_{scene_id}.jpg",
+            f"/illusts/{story_id}/scene_{scene_id}.jpeg",
+            f"/illusts/{story_id}/scene_{scene_id}.webp",
+            f"/illusts/{story_id}/{scene_id}.png",
+            f"/illusts/{story_id}/{scene_id}.jpg",
+            f"/illusts/{story_id}/{scene_id}.jpeg",
+            f"/illusts/{story_id}/{scene_id}.webp",
+        ]
+
+        for candidate in auto_candidates:
+            if public_image_exists(candidate):
+                return candidate
+
+    # 3순위: 장면 이미지가 없으면 기존 대표 이미지 사용
+    return normalize_image_path(story_info.get("image_path", ""))
 
 # story JSON emotion(영어) → Qwen3_tts_service emotion(한국어 4종)
-EMOTION_MAP = {
-    "calm":    "평온",
-    "gentle":  "평온",
-    "warm":    "평온",
-    "neutral": "평온",
-    "happy":   "기쁨",
-    "joyful":  "기쁨",
-    "urgent":  "기쁨",
-    "greedy":  "공포",
-    "sad":     "슬픔",
-    "shocked": "슬픔",
-    "scary":   "공포",
-    "stern":   "공포",
-}
 
 # 감정별 장면 사이 여백 (ms)
 PAUSE_MS = {
@@ -39,22 +87,6 @@ PAUSE_MS = {
     "happy": 600, "joyful": 500, "urgent": 400, "greedy": 600,
     "sad": 1000, "shocked": 900,
     "scary": 1200, "stern": 900,
-}
-
-# 캐릭터별 목소리 지시 프리픽스 (부모 한 명이 모든 역할 담당)
-SPEAKER_PREFIX = {
-    "narrator":   "",
-    "tiger":      "(낮고 거친 호랑이 목소리로) ",
-    "brother":    "(어린 남자아이 목소리로) ",
-    "sister":     "(어린 여자아이 목소리로) ",
-    "king":       "(위엄 있고 낮은 목소리로) ",
-    "lover":      "(그리움에 젖은 목소리로) ",
-    "deer":       "(겁에 질린 동물 목소리로) ",
-    "fairy":      "(맑고 청아한 목소리로) ",
-    "woodcutter": "(수줍고 진지한 목소리로) ",
-    "god":        "(인자하고 깊은 목소리로) ",
-    "turtle":     "(느리고 진지한 목소리로) ",
-    "rabbit":     "(재빠르고 영리한 목소리로) ",
 }
 
 
@@ -92,11 +124,9 @@ async def stream_story_audio_jms(
         for scene in story_data.get("scenes", []):
             scene_emotion = scene.get("emotion", "neutral")
             speaker       = scene.get("speaker", "narrator")
-            kr_emotion    = EMOTION_MAP.get(scene_emotion, "평온")
 
             # 캐릭터 프리픽스 + 정제 텍스트 조합 → Qwen3에 전달
             clean     = clean_text_combined(scene["text"])
-            full_text = SPEAKER_PREFIX.get(speaker, "") + clean
 
             temp_path = None
             try:
@@ -104,7 +134,7 @@ async def stream_story_audio_jms(
                 # 재시도 1회: DashScope API 일시적 오류 대응
                 for attempt in range(2):
                     temp_path = await asyncio.to_thread(
-                        generate_voice_qwen, full_text, voice_id=voice_id, emotion=kr_emotion
+                        generate_voice_qwen, clean, voice_id=voice_id, emotion=scene_emotion
                     )
                     if temp_path is not None:
                         break
@@ -123,7 +153,8 @@ async def stream_story_audio_jms(
                     "speaker":     speaker,
                     "type":        scene.get("type", "narration"),
                     "id":          scene.get("id"),
-                    "storyImage":  story_info.get("image_path")
+                    "storyImage":  story_info.get("image_path"),
+                    "image": get_scene_image_path(story_info, scene)
                 })
 
                 scene_audio = AudioSegment.from_file(temp_path)
