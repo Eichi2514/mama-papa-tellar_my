@@ -17,6 +17,11 @@ function StoryListViewPage() {
     const [scriptLines, setScriptLines] = useState([]);
     const [scriptIndex, setScriptIndex] = useState(0);
     const [registeredVoiceId, setRegisteredVoiceId] = useState(null);
+    const [showModeModal, setShowModeModal] = useState(false);
+    const [selectedStory, setSelectedStory] = useState(null);
+    const [narratorKey, setNarratorKey] = useState(null);
+    const [characterKey, setCharacterKey] = useState(null);
+    const [voiceList, setVoiceList] = useState([]);
     const itemsPerPage = 4;
 
     // 다음 문장으로 넘기는 함수
@@ -42,6 +47,21 @@ function StoryListViewPage() {
                 setScriptLines(data.scripts || []);
             })
             .catch((err) => console.error("스크립트 로딩 실패:", err));
+    
+    // 목소리 로드 추가
+    const keys = Object.keys(localStorage).filter(
+        (k) => k.startsWith("mpt_") && k.endsWith("_voice_id")
+    );
+    const list = keys.map((k) => ({
+        key: k,
+        name: k.replace("mpt_", "").replace("_voice_id", ""),
+        id: localStorage.getItem(k),
+    }));
+    setVoiceList(list);
+    if (list.length > 0) {
+        setNarratorKey(list[0].key);
+        setCharacterKey(list.length > 1 ? list[1].key : list[0].key);
+    }
 
     }, []);
 
@@ -119,6 +139,24 @@ function StoryListViewPage() {
     const currentStories = stories.slice(indexOfFirstItem, indexOfLastItem);
     const totalPages = Math.ceil(stories.length / itemsPerPage);
 
+    // 핸들러 함수 추가
+    const handleNormalStart = () => {
+    setShowModeModal(false);
+    navigate(`/story/${selectedStory.story_id}`, {
+        state: { voiceId: localStorage.getItem(narratorKey) },
+    });
+};
+
+    const handleRoleplayStart = () => {
+    setShowModeModal(false);
+    navigate(`/story/${selectedStory.story_id}`, {
+        state: {
+            narratorVoiceId: localStorage.getItem(narratorKey),
+            characterVoiceId: localStorage.getItem(characterKey),
+        },
+    });
+};
+
     return (
         <div className="tablet-page">
             <VoiceBadge onKeyDetected={(key) => {
@@ -153,12 +191,8 @@ function StoryListViewPage() {
                                     if (isVoiceRegistered) {
                                         saveRecentStory(story);
 
-                                        navigate(`/story/${story.story_id}`, {
-                                            state: {
-                                                voiceId: registeredVoiceId,
-                                                storyTitle: story.title
-                                            }
-                                        });
+                                        setSelectedStory(story);
+                                        setShowModeModal(true);
                                     } else {
                                         alert("목소리를 먼저 등록해 주세요! 🎙️");
                                     }
@@ -183,6 +217,54 @@ function StoryListViewPage() {
                     <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(prev => prev + 1)} className="pag-btn">다음</button>
                 </div>
             </main>
+            {showModeModal && ( // 모달 jsx 추가
+                <div className="mode-modal-overlay" onClick={() => setShowModeModal(false)}>
+                    <div className="mode-modal-card" onClick={(e) => e.stopPropagation()}>
+                        <h3>누가 읽어줄까요?</h3>
+
+                        <p className="role-label">📖 내레이터 <span className="role-desc">이야기 설명 목소리</span></p>
+                        <div className="role-voice-list">
+                            {voiceList.map((v) => (
+                                <button
+                                    key={v.key}
+                                    className={`role-voice-btn ${narratorKey === v.key ? "selected" : ""}`}
+                                    onClick={() => setNarratorKey(v.key)}
+                                >
+                                    {narratorKey === v.key ? "🌟" : "🎙️"} {v.name}
+                                </button>
+                            ))}
+                        </div>
+
+                        <p className="role-label">🎭 등장인물 <span className="role-desc">{selectedStory?.characters?.join(", ")}</span></p>
+                        <div className="role-voice-list">
+                            {voiceList.map((v) => (
+                                <button
+                                    key={v.key}
+                                    className={`role-voice-btn ${characterKey === v.key ? "selected" : ""}`}
+                                    onClick={() => setCharacterKey(v.key)}
+                                >
+                                    {characterKey === v.key ? "🌟" : "🎙️"} {v.name}
+                                </button>
+                            ))}
+                        </div>
+
+                        <div className="mode-btn-group">
+                            <button className="normal-start-btn" onClick={handleNormalStart}>
+                                한 목소리로 읽기
+                            </button>
+                            <button
+                                className="roleplay-start-btn"
+                                onClick={handleRoleplayStart}
+                                disabled={voiceList.length < 2}
+                                style={{ opacity: voiceList.length < 2 ? 0.5 : 1 }}
+                            >
+                                🎭 역할극 모드
+                                {voiceList.length < 2 && <span style={{fontSize:"11px", display:"block"}}>목소리 2개 필요</span>}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

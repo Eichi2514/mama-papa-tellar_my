@@ -354,3 +354,86 @@
     box-shadow: 0 4px 10px rgba(80, 55, 25, 0.15);
     cursor: pointer;
 }
+
+.mode-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.mode-modal-card {
+    background: #fffaf2;
+    border-radius: 24px;
+    padding: 32px 24px;
+    width: 85%;
+    max-width: 380px;
+}
+.mode-modal-card h3 {
+    font-size: 20px;
+    color: #3a2a23;
+    margin: 0 0 24px;
+    text-align: center;
+}
+.role-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #3a2a23;
+    margin: 0 0 10px;
+}
+.role-desc {
+    font-size: 12px;
+    color: #a26d3d;
+    font-weight: 400;
+    margin-left: 6px;
+}
+.role-voice-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.role-voice-btn {
+    padding: 10px 18px;
+    border: 2px solid #eee1d0;
+    border-radius: 14px;
+    background: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    color: #3a2a23;
+    cursor: pointer;
+}
+.role-voice-btn.selected {
+    background: #eee1d0;
+    border-color: #7a5034;
+    color: #7a5034;
+}
+.mode-btn-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+.normal-start-btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 14px;
+    background: #eee1d0;
+    color: #3a2a23;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.roleplay-start-btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 14px;
+    background: #7a5034;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
