@@ -102,8 +102,14 @@ def clean_text_combined(text: str) -> str:
 @router.get("/play/{story_id}")
 async def stream_story_audio_jms(
     story_id: str,
-    voice_id: str = Query(..., description="Qwen3 등록 부모님 목소리 ID")
+    voice_id: str = Query(None),
+    narrator_voice_id: str = Query(None),
+    character_voice_id: str = Query(None),
 ):
+    narrator_vid  = narrator_voice_id or voice_id
+    character_vid = character_voice_id or voice_id
+    if not narrator_vid:
+        raise HTTPException(status_code=400, detail="voice_id가 필요합니다.")
     try:
         # 1. 동화 데이터 로드
         with open(DATA_DIR / "metadata.json", "r", encoding="utf-8") as f:
@@ -127,6 +133,7 @@ async def stream_story_audio_jms(
 
             # 캐릭터 프리픽스 + 정제 텍스트 조합 → Qwen3에 전달
             clean     = clean_text_combined(scene["text"])
+            tts_voice_id = narrator_vid if speaker == "narrator" else character_vid
 
             temp_path = None
             try:
@@ -134,7 +141,7 @@ async def stream_story_audio_jms(
                 # 재시도 1회: DashScope API 일시적 오류 대응
                 for attempt in range(2):
                     temp_path = await asyncio.to_thread(
-                        generate_voice_qwen, clean, voice_id=voice_id, emotion=scene_emotion
+                        generate_voice_qwen, clean, voice_id=tts_voice_id, emotion=scene_emotion
                     )
                     if temp_path is not None:
                         break

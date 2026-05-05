@@ -1,6 +1,7 @@
 import java.io.File
 
 include ':app'
+
 // 1. Capacitor 코어 엔진 연결 (상대 경로 사용)
 include ':capacitor-android'
 project(':capacitor-android').projectDir = new File(rootProject.projectDir, '../node_modules/@capacitor/android/capacitor')
@@ -17,16 +18,15 @@ project(':capacitor-cordova-android-plugins').projectDir = new File(rootProject.
 apply from: 'capacitor.settings.gradle'
 
 """
-
 // 1. Capacitor 코어 엔진 연결 (상대 경로 사용)
 include ':capacitor-android'
 project(':capacitor-android').projectDir = new File(rootProject.projectDir, '../node_modules/@capacitor/android/capacitor')
 
-// 2. 음성 녹음 플러그인 연결
+// 2. 음성 녹음 플러그인 연결 (가장 중요한 부분!)
 include ':capacitor-voice-recorder'
 project(':capacitor-voice-recorder').projectDir = new File(rootProject.projectDir, '../node_modules/capacitor-voice-recorder/android')
 
-// 3. Cordova 관련 플러그인
+// 3. Cordova 관련 플러그인 (필요한 경우)
 include ':capacitor-cordova-android-plugins'
 project(':capacitor-cordova-android-plugins').projectDir = new File(rootProject.projectDir, 'capacitor-cordova-android-plugins')
 

@@ -55,6 +55,8 @@ function StoryViewerPage() {
   // 3. 데이터 로드 (목소리 ID 및 상황 정보)
   const voiceId = location.state?.voiceId;
   const situation = location.state?.situation;
+  const narratorVoiceId = location.state?.narratorVoiceId;
+  const characterVoiceId = location.state?.characterVoiceId;
 
   // 4. 현재 페이지 정보 (서버에서 받은 실제 데이터만 사용!)
   const storyData = dynamicTimeline;
@@ -100,7 +102,7 @@ function StoryViewerPage() {
   };
 
   useEffect(() => {
-    if (!voiceId) {
+    if (!voiceId && !(narratorVoiceId && characterVoiceId)) {
       alert("목소리 정보가 없어요. 메인으로 돌아갑니다.");
       navigate("/");
       return;
@@ -109,9 +111,10 @@ function StoryViewerPage() {
     const initStoryAudio = async () => {
       try {
         // 1. 서버에서 오디오와 타임라인 한 번에 가져오기
-        const response = await fetch(
-          `${API_BASE_URL}/api/stream/play/${storyId}?voice_id=${voiceId}`,
-        );
+        const streamUrl = (narratorVoiceId && characterVoiceId)
+            ? `${API_BASE_URL}/api/stream/play/${storyId}?narrator_voice_id=${narratorVoiceId}&character_voice_id=${characterVoiceId}`
+            : `${API_BASE_URL}/api/stream/play/${storyId}?voice_id=${voiceId}`;
+        const response = await fetch(streamUrl);
 
         // 헤더에서 인코딩된 타임라인 추출 및 디코딩
         const encoded = response.headers.get("X-Story-Timeline");
@@ -174,7 +177,7 @@ function StoryViewerPage() {
         audioRef.current = null;
       }
     };
-  }, [storyId, voiceId, navigate]);
+  }, [storyId, voiceId, narratorVoiceId, characterVoiceId, navigate]);
 
   // 5. 핸들러 함수
   const handlePrevPage = () => {

@@ -8,7 +8,8 @@
       "file_name": "sun_and_moon.json",
       "image_path": "/story_image/sun_and_moon/sam1.png",
       "theme": "Family",
-      "duration": "5m"
+      "duration": "5m",
+      "characters": ["호랑이", "오빠", "누이"]
     },
     {
       "story_id": "ST_002",
@@ -16,7 +17,8 @@
       "file_name": "fairy_and_woodcutter.json",
       "image_path": "/story_image/fairy_and_woodcutter/faw1.png",
       "theme": "Love",
-      "duration": "6m"
+      "duration": "6m",
+      "characters": ["선녀", "나무꾼", "사슴"]
     },
     {
       "story_id": "ST_003",
@@ -24,7 +26,8 @@
       "file_name": "cowherd_and_weaver.json",
       "image_path": "/story_image/cowherd_and_weaver/caw1.png",
       "theme": "Love",
-      "duration": "4m"
+      "duration": "4m",
+      "characters": ["견우", "옥황상제"]
     },
     {
       "story_id": "ST_004",
@@ -32,7 +35,8 @@
       "file_name": "gold_axe_silver_axe.json",
       "image_path": "/story_image/gold_axe_silver_axe/gasa1.png",
       "theme": "Honesty",
-      "duration": "3m"
+      "duration": "3m",
+      "characters": ["나무꾼", "산신령"]
     },
     {
       "story_id": "ST_005",
@@ -40,7 +44,8 @@
       "file_name": "rabbit_and_turtle.json",
       "image_path": "/story_image/rabbit_and_turtle/rat1.png",
       "theme": "Wisdom",
-      "duration": "5m"
+      "duration": "5m",
+      "characters": ["토끼", "자라", "용왕"]
     },
     {
       "story_id": "ST_006",
@@ -48,7 +53,7 @@
       "file_name": "kongjwi_and_patjwi.json",
       "image_path": "/illusts/6.png",
       "theme": "Goodness",
-      "duration": "6m"
+      "duration": "6m" 
     },
     {
       "story_id": "ST_007",
