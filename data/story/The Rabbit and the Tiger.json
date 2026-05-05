@@ -1,0 +1,11 @@
+{
+  "story_title": "토끼와 호랑이",
+  "scenes": [
+    { "id": 1, "type": "narration", "speaker": "narrator", "text": "옛날 옛날 깊은 산속, 배고픈 호랑이가 길을 지나가던 작은 토끼를 덥석 잡아버리고 말았어요.", "emotion": "scary" },
+    { "id": 2, "type": "dialogue", "speaker": "tiger", "text": "어흥! 배가 고파서 죽겠는데 마침 잘 만났구나. 너를 당장 한입에 꿀꺽 잡아먹어야겠다!", "emotion": "hungry" },
+    { "id": 3, "type": "dialogue", "speaker": "rabbit", "text": "잠깐만요, 호랑이님! 저 같은 작은 토끼보다 훨씬 맛있는 '하늘 떡'이 여기 가득한데, 한 번 드셔보시겠어요?", "emotion": "calm" },
+    { "id": 4, "type": "narration", "speaker": "narrator", "text": "꾀쟁이 토끼는 자갈들을 모아 불에 빨갛게 달구고는 맛있는 떡이라고 속여 호랑이에게 건넸어요. 호랑이는 입을 크게 벌려 뜨거운 자갈을 삼켰지요.", "emotion": "calm" },
+    { "id": 5, "type": "dialogue", "speaker": "tiger", "text": "아이쿠 뜨거워! 이게 무슨 떡이야! 아이고 배야, 나 살려라!", "emotion": "painful" },
+    { "id": 6, "type": "narration", "speaker": "narrator", "text": "호랑이가 입과 배가 뜨거워 쩔쩔매며 굴러다니는 사이, 꾀쟁이 토끼는 깡충깡충 뛰어 숲속 깊은 곳으로 무사히 도망쳤답니다.", "emotion": "happy" }
+  ]
+}

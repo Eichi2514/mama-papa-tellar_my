@@ -1,6 +1,6 @@
 {
-  "total_count": 5,
-  "last_updated": "2026-04-24",
+  "total_count": 10,
+  "last_updated": "2026-05-05",
   "story": [
     {
       "story_id": "ST_001",
@@ -41,6 +41,46 @@
       "image_path": "/illusts/5.png",
       "theme": "Wisdom",
       "duration": "5m"
+    },
+    {
+      "story_id": "ST_006",
+      "title": "콩쥐팥쥐",
+      "file_name": "kongjwi_and_patjwi.json",
+      "image_path": "/illusts/6.png",
+      "theme": "Goodness",
+      "duration": "6m"
+    },
+    {
+      "story_id": "ST_007",
+      "title": "흥부와 놀부",
+      "file_name": "heungbu_and_nolbu.json",
+      "image_path": "/illusts/7.png",
+      "theme": "Brotherhood",
+      "duration": "7m"
+    },
+    {
+      "story_id": "ST_008",
+      "title": "혹부리 영감",
+      "file_name": "old_man_with_lump.json",
+      "image_path": "/illusts/8.png",
+      "theme": "Humor",
+      "duration": "5m"
+    },
+    {
+      "story_id": "ST_009",
+      "title": "토끼와 호랑이",
+      "file_name": "rabbit_and_tiger.json",
+      "image_path": "/illusts/9.png",
+      "theme": "Wisdom",
+      "duration": "4m"
+    },
+    {
+      "story_id": "ST_010",
+      "title": "방귀 뀌는 며느리",
+      "file_name": "farting_daughter_in_law.json",
+      "image_path": "/illusts/10.png",
+      "theme": "Humor",
+      "duration": "6m"
     }
   ]
 }

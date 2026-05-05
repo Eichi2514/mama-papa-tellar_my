@@ -1,0 +1,11 @@
+{
+  "story_title": "콩쥐 팥쥐",
+  "scenes": [
+    { "id": 1, "type": "narration", "speaker": "narrator", "text": "옛날 옛날 아주 먼 옛날, 마음씨 착한 콩쥐는 일찍 어머니를 여의고 새어머니와 동생 팥쥐의 구박을 받으며 살았어요.", "emotion": "calm" },
+    { "id": 2, "type": "dialogue", "speaker": "stepmother", "text": "콩쥐야! 우리는 마을 잔치에 갈 테니, 너는 이 밑 빠진 항아리에 물을 가득 채우고 마당의 벼도 다 찧어 놓거라!", "emotion": "angry" },
+    { "id": 3, "type": "narration", "speaker": "narrator", "text": "가족들이 잔치로 떠난 뒤, 콩쥐가 구멍 난 항아리에 물을 부으며 울고 있을 때 어디선가 커다란 두꺼비가 나타나 몸으로 구멍을 막아주었답니다.", "emotion": "sad" },
+    { "id": 4, "type": "narration", "speaker": "narrator", "text": "덕분에 물을 다 채우자, 이번에는 하늘에서 참새 떼가 내려와 벼를 찧어주었고 선녀님이 나타나 예쁜 비단옷과 꽃신까지 선물해 주셨어요.", "emotion": "happy" },
+    { "id": 5, "type": "dialogue", "speaker": "kogji", "text": "세상에, 이렇게 예쁜 옷을 주시다니! 정말 감사합니다. 저도 이제 잔치에 갈 수 있어요!", "emotion": "happy" },
+    { "id": 6, "type": "narration", "speaker": "narrator", "text": "기쁜 마음으로 달려가던 콩쥐는 냇가에서 꽃신 한 짝을 잃어버렸지만, 그 신발을 주운 사또와 인연이 닿아 행복하게 살게 되었답니다.", "emotion": "happy" }
+  ]
+}
