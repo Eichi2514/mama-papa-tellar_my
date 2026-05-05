@@ -7,7 +7,7 @@
       "speaker": "narrator",
       "text": "옛날 옛날 어느 마을에, 정직한 나무꾼이 연못가에서 나무를 베다가 그만 손을 미끄러뜨리고 말았어요.",
       "emotion": "warm",
-      "image": "/story_image/gold_axe_silver_axe/gasa1.png"
+      "image": "/story_image/gold_axe_silver_axe/gasa1.mp4"
     },
     {
       "id": 2,
@@ -23,7 +23,7 @@
       "speaker": "narrator",
       "text": "나무꾼이 엉엉 울자, 갑자기 물 위로 거품이 일더니 하얀 수염을 길게 기른 산신령님이 나타나셨어요.",
       "emotion": "scary",
-      "image": "/story_image/gold_axe_silver_axe/gasa3.png"
+      "image": "/story_image/gold_axe_silver_axe/gasa3.mp4"
     },
     {
       "id": 4,
@@ -63,7 +63,7 @@
       "speaker": "god",
       "text": "이 금도끼가 네 것이냐? (욕심쟁이: 네! 맞습니다!) 고얀 놈! 감히 나를 속이려 들다니, 네 도끼도 찾지 못할 것이다!",
       "emotion": "scary",
-      "image": "/story_image/gold_axe_silver_axe/gasa8.png"
+      "image": "/story_image/gold_axe_silver_axe/gasa8.mp4"
     },
     {
       "id": 9,
