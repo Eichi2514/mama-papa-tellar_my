@@ -33,16 +33,22 @@
       "emotion": "sad",
       "image": "/story_image/cowherd_and_weaver/caw4.png"
     },
+    { "id": 5, 
+    "type": "dialogue", 
+    "speaker": "love", 
+    "text": "견우님 저도 하루 하루 마다 견우님이 사무치게 그리워서 매일 밤마다 울기만 한답니다.", 
+    "emotion": "sad",
+    "image": "/story_image/cowherd_and_weaver/caw4.png"},
     {
-      "id": 5,
+      "id": 6,
       "type": "narration",
       "speaker": "narrator",
       "text": "이 안타까운 사연을 들은 전국의 까치와 까마귀들이 하늘로 날아올라 머리를 맞대고 오작교를 만들어 주었답니다.",
       "emotion": "warm",
-      "image": "/story_image/cowherd_and_weaver/caw5.png"
+      "image": "/story_image/cowherd_and_weaver/caw5.mp4"
     },
     {
-      "id": 6,
+      "id": 7,
       "type": "dialogue",
       "speaker": "lover",
       "text": "드디어 다리가 생겼군요! 당신, 정말 보고 싶었소! 우리가 드디어 만나는구려!",
@@ -50,7 +56,7 @@
       "image": "/story_image/cowherd_and_weaver/caw6.png"
     },
     {
-      "id": 7,
+      "id": 8,
       "type": "dialogue",
       "speaker": "lover",
       "text": "까치들아, 정말 고맙다. 너희들 덕분에 이토록 꿈에 그리던 아내를 품에 안아보는구나.",
@@ -58,12 +64,12 @@
       "image": "/story_image/cowherd_and_weaver/caw7.png"
     },
     {
-      "id": 8,
+      "id": 9,
       "type": "narration",
       "speaker": "narrator",
       "text": "두 사람은 짧은 만남을 뒤로하고 다시 헤어지며 눈물을 흘렸고, 그 눈물이 비가 되어 땅으로 내렸답니다.",
       "emotion": "warm",
-      "image": "/story_image/cowherd_and_weaver/caw8.png"
+      "image": "/story_image/cowherd_and_weaver/caw8.mp4"
     }
   ]
 }

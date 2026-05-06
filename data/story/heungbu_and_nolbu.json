@@ -1,11 +1,12 @@
 {
   "story_title": "흥부와 놀부",
   "scenes": [
-    { "id": 1, "type": "narration", "speaker": "narrator", "text": "옛날 옛날 어느 마을에, 마음씨 착한 흥부와 욕심 많은 형 놀부가 살고 있었어요. 흥부는 가난했지만 가족들과 화목하게 지냈지요.", "emotion": "calm" },
-    { "id": 2, "type": "narration", "speaker": "narrator", "text": "어느 봄날, 흥부는 처마 밑 둥지에서 떨어진 새끼 제비를 발견했어요. 뱀에게 쫓기다 다리가 부러진 제비를 보고 흥부는 정성껏 치료해 주었답니다.", "emotion": "sad" },
-    { "id": 3, "type": "dialogue", "speaker": "heungbu", "text": "아이구, 가엾어라. 제비야, 이 약을 바르면 금방 나을 거야. 내년 봄에는 꼭 건강하게 돌아오렴!", "emotion": "happy" },
-    { "id": 4, "type": "narration", "speaker": "narrator", "text": "다음 해 봄, 다시 찾아온 제비가 선물로 준 박 씨를 심었더니 커다란 박들이 열렸고, 그 속에서 금은보화가 쏟아져 나와 흥부는 부자가 되었어요.", "emotion": "happy" },
-    { "id": 5, "type": "dialogue", "speaker": "nolbu", "text": "뭐? 제비 다리를 고쳐주고 부자가 됐다고? 나도 당장 제비를 잡아다가 다리를 부러뜨려야겠다!", "emotion": "greedy" },
-    { "id": 6, "type": "narration", "speaker": "narrator", "text": "욕심을 부려 일부러 제비를 다치게 한 놀부는, 보물 대신 박 속에서 나온 무서운 도깨비들에게 혼쭐이 나고 재산을 모두 잃고 말았답니다.", "emotion": "scary" }
+    { "id": 1, "type": "narration", "speaker": "narrator", "text": "옛날 옛날 어느 마을에, 마음씨 착한 흥부와 욕심 많은 형 놀부가 살고 있었어요. 흥부는 가난했지만 가족들과 화목하게 지냈지요.", "emotion": "calm", "image": "/story_image/heungbu_and_nolbu/nol1.png" },
+    { "id": 2, "type": "narration", "speaker": "narrator", "text": "어느 봄날, 흥부는 처마 밑 둥지에서 떨어진 새끼 제비를 발견했어요. 뱀에게 쫓기다 다리가 부러진 제비를 보고 흥부는 정성껏 치료해 주었답니다.", "emotion": "sad", "image": "/story_image/heungbu_and_nolbu/nol2.png" },
+    { "id": 3, "type": "dialogue", "speaker": "heungbu", "text": "아이구, 가엾어라. 제비야, 이 약을 바르면 금방 나을 거야. 내년 봄에는 꼭 건강하게 돌아오렴!", "emotion": "happy", "image": "/story_image/heungbu_and_nolbu/nol3.png" },
+    { "id": 4, "type": "dialogue", "speaker": "bird", "text": "제 다리를 치료해주셔서 감사해요. 이건 제 작은 성의이니 꼭 받아주세요.", "emotion": "happy", "image": "/story_image/heungbu_and_nolbu/nol4.png" },
+    { "id": 5, "type": "narration", "speaker": "narrator", "text": "다음 해 봄, 다시 찾아온 제비가 선물로 준 박 씨를 심었더니 커다란 박들이 열렸고, 그 속에서 금은보화가 쏟아져 나와 흥부는 부자가 되었어요.", "emotion": "happy", "image": "/story_image/heungbu_and_nolbu/nol4.png" },
+    { "id": 6, "type": "dialogue", "speaker": "nolbu", "text": "뭐? 제비 다리를 고쳐주고 부자가 됐다고? 나도 당장 제비를 잡아다가 다리를 부러뜨려야겠다!", "emotion": "greedy", "image": "/story_image/heungbu_and_nolbu/nol5.png" },
+    { "id": 7, "type": "narration", "speaker": "narrator", "text": "욕심을 부려 일부러 제비를 다치게 한 놀부는, 보물 대신 박 속에서 나온 무서운 도깨비들에게 혼쭐이 나고 재산을 모두 잃고 말았답니다.", "emotion": "scary", "image": "/story_image/heungbu_and_nolbu/nol6.png" }
   ]
 }

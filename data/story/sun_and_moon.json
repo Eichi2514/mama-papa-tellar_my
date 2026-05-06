@@ -17,8 +17,15 @@
       "emotion": "scary",
       "image": "/story_image/sun_and_moon/sam2.png"
     },
+    { "id": 3, 
+      "type": "dialogue", 
+      "speaker": "mom", 
+      "text": "에그머니나!", 
+      "emotion": "scary",
+      "image": "/story_image/sun_and_moon/sam3.png"
+    },
     {
-      "id": 3,
+      "id": 4,
       "type": "dialogue",
       "speaker": "tiger",
       "text": "떡 하나 주면 안 잡아먹지!",
@@ -26,7 +33,7 @@
       "image": "/story_image/sun_and_moon/sam3.png"
     },
     {
-      "id": 4,
+      "id": 5,
       "type": "narration",
       "speaker": "narrator",
       "text": "결국 어머니를 삼킨 호랑이는 어머니로 변장하고 오누이의 집으로 향했답니다.",
@@ -34,7 +41,7 @@
       "image": "/story_image/sun_and_moon/sam4.png"
     },
     {
-      "id": 5,
+      "id": 6,
       "type": "dialogue",
       "speaker": "tiger",
       "text": "얘들아, 엄마가 왔단다.",
@@ -42,7 +49,7 @@
       "image": "/story_image/sun_and_moon/sam5.png"
     },
     {
-      "id": 6,
+      "id": 7,
       "type": "dialogue",
       "speaker": "tiger",
       "text": "어서 문을 열어주렴!",
@@ -50,7 +57,7 @@
       "image": "/story_image/sun_and_moon/sam6.png"
     },
     {
-      "id": 7,
+      "id": 8,
       "type": "dialogue",
       "speaker": "brother",
       "text": "우리 엄마 목소리가 아니야!",
@@ -58,7 +65,7 @@
       "image": "/story_image/sun_and_moon/sam7.png"
     },
     {
-      "id": 8,
+      "id": 9,
       "type": "narration",
       "speaker": "narrator",
       "text": "오누이는 뒷마당 나무 위로 도망쳤지만, 호랑이는 도끼로 나무를 찍으며 올라왔어요.",
@@ -66,7 +73,7 @@
       "image": "/story_image/sun_and_moon/sam8.png"
     },
     {
-      "id": 9,
+      "id": 10,
       "type": "dialogue",
       "speaker": "sister",
       "text": "하느님, 저희를 살리시려면 새 동아줄을 내려주세요!",
@@ -74,7 +81,7 @@
       "image": "/story_image/sun_and_moon/sam9.png"
     },
     {
-      "id": 10,
+      "id": 11,
       "type": "narration",
       "speaker": "narrator",
       "text": "하늘에서 내려온 줄을 타고 오누이는 해와 달이 되었고, 썩은 줄을 잡은 호랑이는 수수밭으로 떨어졌답니다.",

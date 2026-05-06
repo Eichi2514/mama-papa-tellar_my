@@ -1,10 +1,11 @@
 {
   "story_title": "혹부리 영감",
   "scenes": [
-    { "id": 1, "type": "narration", "speaker": "narrator", "text": "옛날 옛날 어느 마을에, 턱에 커다란 혹이 달린 혹부리 영감이 살았어요. 영감님은 이 커다란 혹 때문에 속상할 때도 있었지만 언제나 즐겁게 노래를 불렀지요.", "emotion": "calm" },
-    { "id": 2, "type": "narration", "speaker": "narrator", "text": "어느 날, 산에서 나무를 하던 영감님은 날이 어두워져 빈집에서 하룻밤을 보내게 되었어요. 무서운 마음을 달래려 신나게 노래를 부르기 시작했지요.", "emotion": "calm" },
-    { "id": 3, "type": "dialogue", "speaker": "goblin", "text": "어이쿠, 정말 신나는 노래구나! 영감님, 그 아름다운 노래는 도대체 어디서 나오는 건가요?", "emotion": "happy" },
-    { "id": 4, "type": "dialogue", "speaker": "old_man", "text": "허허, 도깨비님들도 제 노래가 좋으신가요? 아마 이 턱에 붙은 커다란 혹에서 나오는 것일 테지요.", "emotion": "happy" },
-    { "id": 5, "type": "narration", "speaker": "narrator", "text": "도깨비들은 혹이 노래 주머니인 줄 알고 보물을 주며 혹을 떼어 갔어요. 하지만 이 소문을 듣고 억지로 혹을 팔려던 이웃집 욕심쟁이 영감님은 혹 하나를 더 붙이고 돌아오고 말았답니다.", "emotion": "sad" }
+    { "id": 1, "type": "narration", "speaker": "narrator", "text": "옛날 옛날 어느 마을에, 턱에 커다란 혹이 달린 혹부리 영감이 살았어요. 영감님은 이 커다란 혹 때문에 속상할 때도 있었지만 언제나 즐겁게 노래를 불렀지요.", "emotion": "calm", "image": "/story_image/old_man_with_lump/old1.png" },
+    { "id": 2, "type": "narration", "speaker": "narrator", "text": "어느 날, 산에서 나무를 하던 영감님은 날이 어두워져 빈집에서 하룻밤을 보내게 되었어요. 무서운 마음을 달래려 신나게 노래를 부르기 시작했지요.", "emotion": "calm", "image": "/story_image/old_man_with_lump/old2.png" },
+    { "id": 3, "type": "dialogue", "speaker": "goblin1", "text": "어이쿠, 정말 신나는 노래구나!", "emotion": "happy", "image": "/story_image/old_man_with_lump/old3.png" },
+    { "id": 4, "type": "dialogue", "speaker": "goblin2", "text": "영감님, 그 아름다운 노래는 도대체 어디서 나오는 건가요?", "emotion": "happy", "image": "/story_image/old_man_with_lump/old4.png" },
+    { "id": 5, "type": "dialogue", "speaker": "old_man", "text": "허허, 도깨비님들도 제 노래가 좋으신가요? 아마 이 턱에 붙은 커다란 혹에서 나오는 것일 테지요.", "emotion": "happy", "image": "/story_image/old_man_with_lump/old5.png" },
+    { "id": 6, "type": "narration", "speaker": "narrator", "text": "도깨비들은 혹이 노래 주머니인 줄 알고 보물을 주며 혹을 떼어 갔어요. 하지만 이 소문을 듣고 억지로 혹을 팔려던 이웃집 욕심쟁이 영감님은 혹 하나를 더 붙이고 돌아오고 말았답니다.", "emotion": "sad", "image": "/story_image/old_man_with_lump/old6.png" }
   ]
 }

@@ -61,17 +61,32 @@
       "id": 8,
       "type": "dialogue",
       "speaker": "god",
-      "text": "이 금도끼가 너의 것이냐? 욕심쟁이가 말했습니다. 네! 맞습니다! 그러자 산신령이 고얀 놈! 감히 나를 속이려 들다니, 너의 도끼도 찾지 못할 것이다!",
+      "text": "이 금도끼가 너의 것이냐?",
       "emotion": "scary",
       "image": "/story_image/gold_axe_silver_axe/gasa8.mp4"
     },
     {
       "id": 9,
-      "type": "narration",
-      "speaker": "narrator",
-      "text": "욕심을 부리던 이웃은 제 도끼마저 잃고 후회했지만 소용없었죠. 정직함이야말로 가장 큰 보물이라는 것을 우리 친구들도 잊지 마세요.",
+      "type": "dialogue",
+      "speaker": "lier",
+      "text": "네! 맞습니다! 제 도끼가 분명합니다요.",
+      "emotion": "happy",
+      "image": "/story_image/gold_axe_silver_axe/gasa8.mp4"
+    },
+    { "id": 10, 
+      "type": "dialogue", 
+      "speaker": "god", 
+      "text": "고얀 놈! 감히 나를 속이려 들다니, 너의 도끼도 찾지 못할 것이다!", 
+      "emotion": "scary",
+      "image": "/story_image/gold_axe_silver_axe/gasa8.mp4"
+    },
+    { "id": 11, 
+      "type": "narration", 
+      "speaker": "narrator", 
+      "text": "욕심을 부리던 이웃은 제 도끼마저 잃고 후회했지만 소용없었죠. 정직함이야말로 가장 큰 보물이라는 것을 우리 친구들도 잊지 마세요.", 
       "emotion": "warm",
       "image": "/story_image/gold_axe_silver_axe/gasa9.png"
     }
+
   ]
 }
