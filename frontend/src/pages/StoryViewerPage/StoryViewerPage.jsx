@@ -5,31 +5,32 @@ import EmotionBar from "../../components/EmotionBar/EmotionBar.jsx";
 import StoryNavigation from "../../components/StoryNavigation/StoryNavigation.jsx";
 import StorySlide from "../../components/StorySlide/StorySlide.jsx";
 import PlaybackRateControl from "../../components/PlaybackRateControl/PlaybackRateControl.jsx";
+import VoiceBadge from "../../components/VoiceBadge.jsx";
 import "./StoryViewerPage.css";
 
 // 완청 편수를 localStorage에 1 올려주는 함수
 // 같은 동화를 여러 번 들어도 중복 카운트 안 되도록 storyId로 체크
 function markStoryCompleted(storyId) {
-    const KEY_COUNT   = 'mpt_completed_books';
-    const KEY_RECENT  = 'mpt_recent_stories';
+  const KEY_COUNT = 'mpt_completed_books';
+  const KEY_RECENT = 'mpt_recent_stories';
 
-    const recentStories = JSON.parse(localStorage.getItem(KEY_RECENT) || '[]');
+  const recentStories = JSON.parse(localStorage.getItem(KEY_RECENT) || '[]');
 
-    // 최근 목록에서 해당 storyId 찾기
-    const alreadyCompleted = recentStories.some(
-        (s) => s.story_id === storyId && s.completed
-    );
-    if (alreadyCompleted) return;
+  // 최근 목록에서 해당 storyId 찾기
+  const alreadyCompleted = recentStories.some(
+    (s) => s.story_id === storyId && s.completed
+  );
+  if (alreadyCompleted) return;
 
-    // completed 플래그 추가
-    const updated = recentStories.map((s) =>
-        s.story_id === storyId ? { ...s, completed: true } : s
-    );
-    localStorage.setItem(KEY_RECENT, JSON.stringify(updated));
+  // completed 플래그 추가
+  const updated = recentStories.map((s) =>
+    s.story_id === storyId ? { ...s, completed: true } : s
+  );
+  localStorage.setItem(KEY_RECENT, JSON.stringify(updated));
 
-    // 완청 편수 = completed인 항목 수
-    const count = updated.filter((s) => s.completed).length;
-    localStorage.setItem(KEY_COUNT, String(count));
+  // 완청 편수 = completed인 항목 수
+  const count = updated.filter((s) => s.completed).length;
+  localStorage.setItem(KEY_COUNT, String(count));
 }
 
 function StoryViewerPage() {
@@ -112,8 +113,8 @@ function StoryViewerPage() {
       try {
         // 1. 서버에서 오디오와 타임라인 한 번에 가져오기
         const streamUrl = (narratorVoiceId && characterVoiceId)
-            ? `${API_BASE_URL}/api/stream/play/${storyId}?narrator_voice_id=${narratorVoiceId}&character_voice_id=${characterVoiceId}`
-            : `${API_BASE_URL}/api/stream/play/${storyId}?voice_id=${voiceId}`;
+          ? `${API_BASE_URL}/api/stream/play/${storyId}?narrator_voice_id=${narratorVoiceId}&character_voice_id=${characterVoiceId}`
+          : `${API_BASE_URL}/api/stream/play/${storyId}?voice_id=${voiceId}`;
         const response = await fetch(streamUrl);
 
         // 헤더에서 인코딩된 타임라인 추출 및 디코딩
@@ -232,14 +233,12 @@ function StoryViewerPage() {
 
   return (
     <div className="tablet-page">
+      <VoiceBadge homePath="/pages/StoryListViewPage" />
       <main className="tablet-frame">
         <section className="storybook-section">
+          <p className="service-label">MAMA / PAPA TELLER</p>
           {/* 헤더 영역 */}
           <div className="storybook-header">
-            <button className="home-button" onClick={handleGoHome}>
-              처음으로
-            </button>
-
             <div className="playback-controls">
               <button className="play-pause-btn" onClick={togglePlay}>
                 {isPlaying ? "⏸️ 잠깐 멈춤" : "▶️ 다시 재생"}
@@ -273,13 +272,13 @@ function StoryViewerPage() {
             />
           )}
 
-          {/* 하단 감정 바 */}
+          {/* 하단 감정 바
           {currentPage && (
             <EmotionBar
               emotion={currentPage.emotion}
               emotionLevel={currentPage.emotionLevel || 3}
             />
-          )}
+          )} */}
 
           {/* 속도 조절 */}
           {!isLoading && currentPage && (

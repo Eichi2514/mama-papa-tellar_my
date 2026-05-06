@@ -4,6 +4,10 @@
   gap: 22px;
 }
 
+.service-label {
+  text-align: center;
+}
+
 .storybook-header {
   display: flex;
   justify-content: space-between;

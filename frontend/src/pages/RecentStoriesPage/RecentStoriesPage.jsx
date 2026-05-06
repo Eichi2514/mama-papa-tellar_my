@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import VoiceBadge from "../../components/VoiceBadge.jsx";
 import "./RecentStoriesPage.css";
 
 function RecentStoriesPage() {
@@ -33,13 +34,7 @@ function RecentStoriesPage() {
     return (
         <div className="recent-page">
             <main className="recent-frame">
-                <button
-                    type="button"
-                    className="recent-back-button"
-                    onClick={() => navigate("/")}
-                >
-                    ←
-                </button>
+                <VoiceBadge />
 
                 <header className="recent-header">
                     <p className="recent-label">MAMA / PAPA TELLER</p>

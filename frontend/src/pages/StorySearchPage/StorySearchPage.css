@@ -9,7 +9,6 @@
 .search-frame {
     position: relative;
     width: 100%;
-    max-width: 390px;
     min-height: 100vh;
     padding: 70px 28px 40px;
     background: linear-gradient(180deg, #efe4d2 0%, #fcf9f5 100%);

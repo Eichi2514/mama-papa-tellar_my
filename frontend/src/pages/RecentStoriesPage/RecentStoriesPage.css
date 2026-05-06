@@ -9,7 +9,6 @@
 .recent-frame {
     position: relative;
     width: 100%;
-    max-width: 390px;
     min-height: 100vh;
     padding: 72px 28px 40px;
     background: linear-gradient(180deg, #efe4d2 0%, #fcf9f5 100%);
@@ -84,14 +83,14 @@
 }
 
 /* RecentStoriesPage.css 기존 스타일에 아래 내용 추가 */
- 
+
 .recent-item-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 8px;
 }
- 
+
 .completed-badge {
     font-size: 11px;
     font-weight: 600;
@@ -102,4 +101,3 @@
     white-space: nowrap;
     flex-shrink: 0;
 }
- 

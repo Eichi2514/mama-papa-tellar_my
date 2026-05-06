@@ -176,7 +176,7 @@ function FamilyVoicesViewPage() {
                                     {isSelected ? "🌟" : "🎙️"} {/* 선택 시 아이콘 변경으로 직관성 부여 */}
                                 </div>
                                 <h3>{voice.name}</h3>
-                                <p className="voice-id-tag">ID: {voice.id}</p>
+                                {/* <p className="voice-id-tag">ID: {voice.id}</p> */}
                                 {isSelected ? (
                                     <span className="selected-tag">사용 중</span>
                                 ) : (

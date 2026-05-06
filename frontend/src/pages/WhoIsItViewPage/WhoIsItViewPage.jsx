@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import API_BASE_URL from "../../config/apiConfig";
 import VoiceBadge from "../../components/VoiceBadge.jsx";
@@ -13,18 +13,37 @@ function WhoIsItViewPage() {
     const [currentAudioUrl, setCurrentAudioUrl] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
+    // 현재 재생 중인 오디오를 담아둘 Ref
+    const activeAudioRef = useRef(null);
+
     // 페이지를 아예 나갈 때(언마운트)를 위한 안전장치 추가
+    useEffect(() => {
+        return () => {
+            if (activeAudioRef.current) {
+                activeAudioRef.current.pause();
+                activeAudioRef.current = null;
+            }
+        };
+    }, []);
+
+    // 음성 URL 메모리 정리는 별도로 관리하기
     useEffect(() => {
         return () => {
             if (currentAudioUrl) {
                 URL.revokeObjectURL(currentAudioUrl);
             }
         };
-    }, [currentAudioUrl]); // URL이 바뀔 때마다 정리 대상을 업데이트
+    }, [currentAudioUrl]);
 
     // 퀴즈 데이터를 가져오고 보기를 섞는 함수
     const fetchRandomQuiz = async () => {
         try {
+            // 새로운 문제를 불러올 때도 이전에 나오던 소리는 다정하게 꺼주기
+            if (activeAudioRef.current) {
+                activeAudioRef.current.pause();
+                activeAudioRef.current = null;
+            }
+
             const res = await fetch(`${API_BASE_URL}/api/quizzes`);
             const data = await res.json();
             const allQuizzes = data.quizzes;
@@ -74,9 +93,15 @@ function WhoIsItViewPage() {
             return;
         }
 
+        // 이미 재생 중인 소리가 있다면 겹쳐 들리지 않게
+        if (activeAudioRef.current) {
+            activeAudioRef.current.pause();
+        }
+
         // 이미 생성된 음성 URL이 있다면 서버 호출 없이 바로 재생
         if (currentAudioUrl) {
             const audio = new Audio(currentAudioUrl);
+            activeAudioRef.current = audio;
             audio.play();
             return;
         }
@@ -95,6 +120,7 @@ function WhoIsItViewPage() {
                 const audioUrl = URL.createObjectURL(audioBlob);
                 setCurrentAudioUrl(audioUrl); // 생성된 URL 상태에 저장
                 const audio = new Audio(audioUrl);
+                activeAudioRef.current = audio; // 6. 보물 상자에 넣어두기
                 audio.play(); // 아이에게 다정한 힌트 들려주기!
             } else {
                 console.error("앗, 오디오 파일을 가져오는 데 문제가 생겼어요.");
@@ -109,6 +135,9 @@ function WhoIsItViewPage() {
     const handleAnswerClick = (selected) => {
         if (selected === quizData.answer) {
             setIsCorrect(true);
+            if (activeAudioRef.current) {
+                activeAudioRef.current.pause();
+            }
             alert("딩동댕! 정답이에요! 🎉");
             // 약간의 딜레이 후 다음 문제로
             setTimeout(fetchRandomQuiz, 1500);

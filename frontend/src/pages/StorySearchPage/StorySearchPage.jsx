@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API_BASE_URL from "../../config/apiConfig";
+import VoiceBadge from "../../components/VoiceBadge.jsx";
 import "./StorySearchPage.css";
 
 function StorySearchPage() {
@@ -44,16 +45,10 @@ function StorySearchPage() {
     return (
         <div className="search-page">
             <main className="search-frame">
-                <button
-                    type="button"
-                    className="search-back-button"
-                    onClick={() => navigate("/pages/StoryListViewPage")}
-                >
-                    ←
-                </button>
+                <VoiceBadge homePath="/pages/StoryListViewPage" />
 
                 <header className="search-header">
-                    <p className="search-label">STORY SEARCH</p>
+                    <p className="service-label">MAMA / PAPA TELLER</p>
                     <h1>동화책 검색</h1>
                 </header>
 
