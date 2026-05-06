@@ -29,7 +29,7 @@
       "id": 4,
       "type": "dialogue",
       "speaker": "god",
-      "text": "허허, 어째서 그리 슬피 울고 있느냐? 이 번쩍이는 금도끼가 네 도끼냐? 아니면 이 은도끼가 네 것이냐?",
+      "text": "허허, 어째서 그리 슬피 울고 있느냐? 이 번쩍이는 금도끼가 너의 도끼냐? 아니면 이 은도끼가 너의 것이냐?",
       "emotion": "gentle",
       "image": "/story_image/gold_axe_silver_axe/gasa4.png"
     },
@@ -45,7 +45,7 @@
       "id": 6,
       "type": "dialogue",
       "speaker": "god",
-      "text": "참으로 정직하구나! 네 마음씨가 기특하니 이 도끼들을 모두 너에게 주마. 가져가서 행복하게 살거라!",
+      "text": "참으로 정직하구나! 너의 마음씨가 기특하니 이 도끼들을 모두 너에게 주마. 가져가서 행복하게 살거라!",
       "emotion": "happy",
       "image": "/story_image/gold_axe_silver_axe/gasa6.png"
     },
