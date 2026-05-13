@@ -57,9 +57,7 @@ function StoryViewerPage() {
   const [totalScenes, setTotalScenes] = useState(0);
   const [dynamicTimeline, setDynamicTimeline] = useState(null); // 누락된 State 추가
 
-  const [playbackRate, setPlaybackRate] = useState(
-    () => Number(localStorage.getItem("mpt_playback_rate")) || 1
-  );
+  const [playbackRate, setPlaybackRate] = useState(1);
 
   const audioRef = useRef(null);
   const sceneQueueRef = useRef([]);
@@ -67,6 +65,7 @@ function StoryViewerPage() {
   const streamDoneRef = useRef(false);
   const waitIntervalRef = useRef(null);
   const firstChunkRef = useRef(true);
+  const playbackRateRef = useRef(1);
 
   // ── 특정 장면 재생 ──────────────────────────────────────────────────────
   const playScene = (index, queue) => {
@@ -85,7 +84,7 @@ function StoryViewerPage() {
 
     const { audioUrl } = queue[index];
     const audio = new Audio(audioUrl);
-    audio.playbackRate = playbackRate;
+    audio.playbackRate = playbackRateRef.current;
     audioRef.current = audio;
 
     audio.onplay = () => setIsPlaying(true);
@@ -260,7 +259,7 @@ function StoryViewerPage() {
 
   const handlePlaybackRateChange = (rate) => {
     setPlaybackRate(rate);
-    localStorage.setItem("mpt_playback_rate", String(rate));
+    playbackRateRef.current = rate;
     if (audioRef.current) audioRef.current.playbackRate = rate;
   };
 

@@ -1,0 +1,124 @@
+<mxfile host="app.diagrams.net" version="21.0.0">
+  <diagram name="MAMA PAPA TELLER 아키텍처">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ===== 제목 ===== -->
+        <mxCell id="title" value="MAMA / PAPA TELLER — 서비스 아키텍처" style="text;html=1;fontSize=18;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Android App ===== -->
+        <mxCell id="app" value="📱 Android App&#xa;(Capacitor + React)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;strokeColor=#314354;fontColor=#ffffff;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a1" value="① 목소리 등록&#xa;마이크 녹음 → WAV 전송" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="190" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="② 동화 선택 + 모드 설정&#xa;한 목소리 / 역할극 / 주인공모드" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="300" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="③ 동화 재생&#xa;스트리밍 수신 → 즉시 재생" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="410" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ===== FastAPI 백엔드 ===== -->
+        <mxCell id="api" value="⚙️ FastAPI 백엔드" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;strokeColor=#314354;fontColor=#ffffff;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="80" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b1" value="voice_router&#xa;목소리 등록 → voice_id 반환" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="190" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b2" value="story_router&#xa;동화 목록 반환" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="300" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b3" value="stream_JMS.py&#xa;장면 전처리 · 목소리 분기&#xa;PREFETCH=2 병렬 TTS · 청크 전송" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="390" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Qwen3 TTS ===== -->
+        <mxCell id="tts" value="🤖 Qwen3 TTS&#xa;(DashScope API)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;strokeColor=#314354;fontColor=#ffffff;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="80" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c1" value="텍스트 + voice_id + emotion&#xa;→ MP3 생성" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="700" y="190" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="asyncio.to_thread()&#xa;비동기 처리 · 실패 시 재시도" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="700" y="300" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ===== localStorage ===== -->
+        <mxCell id="ls" value="💾 localStorage&#xa;voice_id · child_name · 완청기록" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="540" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ===== 완청 ===== -->
+        <mxCell id="done" value="✅ 완청 완료&#xa;markStoryCompleted()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="540" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ===== EDGES ===== -->
+        <!-- App 내부 흐름 -->
+        <mxCell id="ea1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="a1" target="a2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ea2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="a2" target="a3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 백엔드 내부 흐름 -->
+        <mxCell id="eb1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="b1" target="b2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="b2" target="b3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TTS 내부 흐름 -->
+        <mxCell id="ec1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="c1" target="c2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 트랙 간 연결 -->
+        <mxCell id="cross1" value="POST /voice/register" style="edgeStyle=orthogonalEdgeStyle;fontSize=11;fontStyle=1;" edge="1" source="a1" target="b1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cross2" value="GET /api/stories" style="edgeStyle=orthogonalEdgeStyle;fontSize=11;fontStyle=1;" edge="1" source="a2" target="b2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cross3" value="GET /api/stream/play/{id}" style="edgeStyle=orthogonalEdgeStyle;fontSize=11;fontStyle=1;" edge="1" source="a2" target="b3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cross4" value="TTS 요청" style="edgeStyle=orthogonalEdgeStyle;fontSize=11;fontStyle=1;" edge="1" source="b1" target="c1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cross5" value="MP3 전달" style="edgeStyle=orthogonalEdgeStyle;fontSize=11;fontStyle=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="c2" target="b3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cross6" value="StreamingResponse" style="edgeStyle=orthogonalEdgeStyle;fontSize=11;fontStyle=1;" edge="1" source="b3" target="a3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cross7" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="a3" target="done" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- localStorage 점선 -->
+        <mxCell id="els1" value="저장" style="edgeStyle=orthogonalEdgeStyle;dashed=1;fontSize=11;" edge="1" source="a1" target="ls" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="els2" value="읽기" style="edgeStyle=orthogonalEdgeStyle;dashed=1;fontSize=11;" edge="1" source="ls" target="a2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="els3" value="완청 저장" style="edgeStyle=orthogonalEdgeStyle;dashed=1;fontSize=11;" edge="1" source="done" target="ls" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
